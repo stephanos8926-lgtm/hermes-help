@@ -1,0 +1,7033 @@
+{
+  "version": 3,
+  "params": {
+    "model": {
+      "path": "model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "Model configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "fallback_providers": {
+      "path": "fallback_providers",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "Fallback Providers configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "toolsets": {
+      "path": "toolsets",
+      "type": "list",
+      "default": [
+        "hermes-cli"
+      ],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "Toolsets configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "max_concurrent_sessions": {
+      "path": "max_concurrent_sessions",
+      "type": "null",
+      "default": null,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "Max Concurrent Sessions configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "max_live_sessions": {
+      "path": "max_live_sessions",
+      "type": "integer",
+      "default": 16,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "Max Live Sessions configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.max_turns": {
+      "path": "agent.max_turns",
+      "type": "integer",
+      "default": 90,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 500,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.gateway_timeout": {
+      "path": "agent.gateway_timeout",
+      "type": "integer",
+      "default": 1800,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 36000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.restart_drain_timeout": {
+      "path": "agent.restart_drain_timeout",
+      "type": "integer",
+      "default": 180,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 3600,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.api_max_retries": {
+      "path": "agent.api_max_retries",
+      "type": "integer",
+      "default": 3,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 10,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.service_tier": {
+      "path": "agent.service_tier",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "default",
+        "eco"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.tool_use_enforcement": {
+      "path": "agent.tool_use_enforcement",
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.task_completion_guidance": {
+      "path": "agent.task_completion_guidance",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.parallel_tool_call_guidance": {
+      "path": "agent.parallel_tool_call_guidance",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.environment_probe": {
+      "path": "agent.environment_probe",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.environment_hint": {
+      "path": "agent.environment_hint",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.coding_context": {
+      "path": "agent.coding_context",
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "focus",
+        "on",
+        "off"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.verify_on_stop": {
+      "path": "agent.verify_on_stop",
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.gateway_timeout_warning": {
+      "path": "agent.gateway_timeout_warning",
+      "type": "integer",
+      "default": 900,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 36000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.clarify_timeout": {
+      "path": "agent.clarify_timeout",
+      "type": "integer",
+      "default": 600,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 36000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.gateway_notify_interval": {
+      "path": "agent.gateway_notify_interval",
+      "type": "integer",
+      "default": 180,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 3600,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.gateway_auto_continue_freshness": {
+      "path": "agent.gateway_auto_continue_freshness",
+      "type": "integer",
+      "default": 3600,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 86400,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.image_input_mode": {
+      "path": "agent.image_input_mode",
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "native",
+        "text"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "agent.disabled_toolsets": {
+      "path": "agent.disabled_toolsets",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.backend": {
+      "path": "terminal.backend",
+      "type": "string",
+      "default": "local",
+      "enum": [
+        "local",
+        "docker",
+        "ssh",
+        "modal",
+        "singularity",
+        "daytona"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.modal_mode": {
+      "path": "terminal.modal_mode",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.cwd": {
+      "path": "terminal.cwd",
+      "type": "string",
+      "default": ".",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.timeout": {
+      "path": "terminal.timeout",
+      "type": "integer",
+      "default": 180,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 600,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.daemon_term_grace_seconds": {
+      "path": "terminal.daemon_term_grace_seconds",
+      "type": "float",
+      "default": 2.0,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 30,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.env_passthrough": {
+      "path": "terminal.env_passthrough",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.home_mode": {
+      "path": "terminal.home_mode",
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "real",
+        "profile"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.shell_init_files": {
+      "path": "terminal.shell_init_files",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.auto_source_bashrc": {
+      "path": "terminal.auto_source_bashrc",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.docker_image": {
+      "path": "terminal.docker_image",
+      "type": "string",
+      "default": "nikolaik/python-nodejs:python3.11-nodejs20",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.docker_forward_env": {
+      "path": "terminal.docker_forward_env",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.singularity_image": {
+      "path": "terminal.singularity_image",
+      "type": "string",
+      "default": "docker://nikolaik/python-nodejs:python3.11-nodejs20",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.modal_image": {
+      "path": "terminal.modal_image",
+      "type": "string",
+      "default": "nikolaik/python-nodejs:python3.11-nodejs20",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.daytona_image": {
+      "path": "terminal.daytona_image",
+      "type": "string",
+      "default": "nikolaik/python-nodejs:python3.11-nodejs20",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.container_cpu": {
+      "path": "terminal.container_cpu",
+      "type": "integer",
+      "default": 1,
+      "enum": null,
+      "min_val": 0.5,
+      "max_val": 64,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.container_memory": {
+      "path": "terminal.container_memory",
+      "type": "integer",
+      "default": 5120,
+      "enum": null,
+      "min_val": 256,
+      "max_val": 131072,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.container_disk": {
+      "path": "terminal.container_disk",
+      "type": "integer",
+      "default": 51200,
+      "enum": null,
+      "min_val": 1024,
+      "max_val": 1000000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.container_persistent": {
+      "path": "terminal.container_persistent",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.docker_volumes": {
+      "path": "terminal.docker_volumes",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.docker_mount_cwd_to_workspace": {
+      "path": "terminal.docker_mount_cwd_to_workspace",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.docker_extra_args": {
+      "path": "terminal.docker_extra_args",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.docker_run_as_host_user": {
+      "path": "terminal.docker_run_as_host_user",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "terminal.persistent_shell": {
+      "path": "terminal.persistent_shell",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "web.backend": {
+      "path": "web.backend",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "bing",
+        "searxng",
+        "tavily",
+        "exa"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "web.search_backend": {
+      "path": "web.search_backend",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "searxng",
+        "tavily",
+        "exa"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "web.extract_backend": {
+      "path": "web.extract_backend",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "native",
+        "jina",
+        "firecrawl"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.inactivity_timeout": {
+      "path": "browser.inactivity_timeout",
+      "type": "integer",
+      "default": 120,
+      "enum": null,
+      "min_val": 10,
+      "max_val": 3600,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.command_timeout": {
+      "path": "browser.command_timeout",
+      "type": "integer",
+      "default": 30,
+      "enum": null,
+      "min_val": 5,
+      "max_val": 120,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.record_sessions": {
+      "path": "browser.record_sessions",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.allow_private_urls": {
+      "path": "browser.allow_private_urls",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.engine": {
+      "path": "browser.engine",
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "lightpanda",
+        "chrome"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.auto_local_for_private_urls": {
+      "path": "browser.auto_local_for_private_urls",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.cdp_url": {
+      "path": "browser.cdp_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.dialog_policy": {
+      "path": "browser.dialog_policy",
+      "type": "string",
+      "default": "must_respond",
+      "enum": [
+        "must_respond",
+        "auto_dismiss",
+        "auto_accept"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.dialog_timeout_s": {
+      "path": "browser.dialog_timeout_s",
+      "type": "integer",
+      "default": 300,
+      "enum": null,
+      "min_val": 30,
+      "max_val": 600,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.camofox.managed_persistence": {
+      "path": "browser.camofox.managed_persistence",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.camofox.user_id": {
+      "path": "browser.camofox.user_id",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.camofox.session_key": {
+      "path": "browser.camofox.session_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.camofox.adopt_existing_tab": {
+      "path": "browser.camofox.adopt_existing_tab",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.camofox.rewrite_loopback_urls": {
+      "path": "browser.camofox.rewrite_loopback_urls",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "browser.camofox.loopback_host_alias": {
+      "path": "browser.camofox.loopback_host_alias",
+      "type": "string",
+      "default": "host.docker.internal",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "checkpoints.enabled": {
+      "path": "checkpoints.enabled",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "checkpoints.max_snapshots": {
+      "path": "checkpoints.max_snapshots",
+      "type": "integer",
+      "default": 20,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 200,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "checkpoints.max_total_size_mb": {
+      "path": "checkpoints.max_total_size_mb",
+      "type": "integer",
+      "default": 500,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 100000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "checkpoints.max_file_size_mb": {
+      "path": "checkpoints.max_file_size_mb",
+      "type": "integer",
+      "default": 10,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 100000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "checkpoints.auto_prune": {
+      "path": "checkpoints.auto_prune",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "checkpoints.retention_days": {
+      "path": "checkpoints.retention_days",
+      "type": "integer",
+      "default": 7,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 365,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "checkpoints.delete_orphans": {
+      "path": "checkpoints.delete_orphans",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "checkpoints.min_interval_hours": {
+      "path": "checkpoints.min_interval_hours",
+      "type": "integer",
+      "default": 24,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 720,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "context_file_max_chars": {
+      "path": "context_file_max_chars",
+      "type": "null",
+      "default": null,
+      "enum": null,
+      "min_val": 1000,
+      "max_val": 2000000,
+      "description": "Context File Max Chars configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "file_read_max_chars": {
+      "path": "file_read_max_chars",
+      "type": "integer",
+      "default": 100000,
+      "enum": null,
+      "min_val": 1000,
+      "max_val": 5000000,
+      "description": "File Read Max Chars configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "mcp_discovery_timeout": {
+      "path": "mcp_discovery_timeout",
+      "type": "float",
+      "default": 1.5,
+      "enum": null,
+      "min_val": 0.1,
+      "max_val": 30.0,
+      "description": "Mcp Discovery Timeout configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "tool_output.max_bytes": {
+      "path": "tool_output.max_bytes",
+      "type": "integer",
+      "default": 50000,
+      "enum": null,
+      "min_val": 1000,
+      "max_val": 1000000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tool_output.max_lines": {
+      "path": "tool_output.max_lines",
+      "type": "integer",
+      "default": 2000,
+      "enum": null,
+      "min_val": 50,
+      "max_val": 10000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tool_output.max_line_length": {
+      "path": "tool_output.max_line_length",
+      "type": "integer",
+      "default": 2000,
+      "enum": null,
+      "min_val": 50,
+      "max_val": 100000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tool_loop_guardrails.warnings_enabled": {
+      "path": "tool_loop_guardrails.warnings_enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tool_loop_guardrails.hard_stop_enabled": {
+      "path": "tool_loop_guardrails.hard_stop_enabled",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tool_loop_guardrails.warn_after.exact_failure": {
+      "path": "tool_loop_guardrails.warn_after.exact_failure",
+      "type": "integer",
+      "default": 2,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 20,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tool_loop_guardrails.warn_after.same_tool_failure": {
+      "path": "tool_loop_guardrails.warn_after.same_tool_failure",
+      "type": "integer",
+      "default": 3,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 20,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tool_loop_guardrails.warn_after.idempotent_no_progress": {
+      "path": "tool_loop_guardrails.warn_after.idempotent_no_progress",
+      "type": "integer",
+      "default": 2,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 20,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tool_loop_guardrails.hard_stop_after.exact_failure": {
+      "path": "tool_loop_guardrails.hard_stop_after.exact_failure",
+      "type": "integer",
+      "default": 5,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 50,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tool_loop_guardrails.hard_stop_after.same_tool_failure": {
+      "path": "tool_loop_guardrails.hard_stop_after.same_tool_failure",
+      "type": "integer",
+      "default": 8,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 50,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tool_loop_guardrails.hard_stop_after.idempotent_no_progress": {
+      "path": "tool_loop_guardrails.hard_stop_after.idempotent_no_progress",
+      "type": "integer",
+      "default": 5,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 50,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "compression.enabled": {
+      "path": "compression.enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "compression.threshold": {
+      "path": "compression.threshold",
+      "type": "float",
+      "default": 0.5,
+      "enum": null,
+      "min_val": 0.1,
+      "max_val": 1.0,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "compression.target_ratio": {
+      "path": "compression.target_ratio",
+      "type": "float",
+      "default": 0.2,
+      "enum": null,
+      "min_val": 0.05,
+      "max_val": 1.0,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "compression.protect_last_n": {
+      "path": "compression.protect_last_n",
+      "type": "integer",
+      "default": 20,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 200,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "compression.hygiene_hard_message_limit": {
+      "path": "compression.hygiene_hard_message_limit",
+      "type": "integer",
+      "default": 5000,
+      "enum": null,
+      "min_val": 10,
+      "max_val": 50000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "compression.protect_first_n": {
+      "path": "compression.protect_first_n",
+      "type": "integer",
+      "default": 3,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 20,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "compression.abort_on_summary_failure": {
+      "path": "compression.abort_on_summary_failure",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "compression.codex_gpt55_autoraise": {
+      "path": "compression.codex_gpt55_autoraise",
+      "type": "boolean",
+      "default": true,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "compression.in_place": {
+      "path": "compression.in_place",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "kanban.dispatch_in_gateway": {
+      "path": "kanban.dispatch_in_gateway",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "kanban.dispatch_interval_seconds": {
+      "path": "kanban.dispatch_interval_seconds",
+      "type": "integer",
+      "default": 60,
+      "enum": null,
+      "min_val": 5,
+      "max_val": 600,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "kanban.failure_limit": {
+      "path": "kanban.failure_limit",
+      "type": "integer",
+      "default": 2,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 20,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "kanban.worker_log_rotate_bytes": {
+      "path": "kanban.worker_log_rotate_bytes",
+      "type": "integer",
+      "default": 2097152,
+      "enum": null,
+      "min_val": 65536,
+      "max_val": 100000000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "kanban.worker_log_backup_count": {
+      "path": "kanban.worker_log_backup_count",
+      "type": "integer",
+      "default": 1,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 10,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "kanban.orchestrator_profile": {
+      "path": "kanban.orchestrator_profile",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "kanban.default_assignee": {
+      "path": "kanban.default_assignee",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "kanban.max_in_progress_per_profile": {
+      "path": "kanban.max_in_progress_per_profile",
+      "type": "null",
+      "default": null,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "kanban.auto_decompose": {
+      "path": "kanban.auto_decompose",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "kanban.auto_decompose_per_tick": {
+      "path": "kanban.auto_decompose_per_tick",
+      "type": "integer",
+      "default": 3,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 50,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "kanban.dispatch_stale_timeout_seconds": {
+      "path": "kanban.dispatch_stale_timeout_seconds",
+      "type": "integer",
+      "default": 14400,
+      "enum": null,
+      "min_val": 60,
+      "max_val": 259200,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "prompt_caching.cache_ttl": {
+      "path": "prompt_caching.cache_ttl",
+      "type": "string",
+      "default": "5m",
+      "enum": [
+        "5m",
+        "1h"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "openrouter.response_cache": {
+      "path": "openrouter.response_cache",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "openrouter.response_cache_ttl": {
+      "path": "openrouter.response_cache_ttl",
+      "type": "integer",
+      "default": 300,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "openrouter.min_coding_score": {
+      "path": "openrouter.min_coding_score",
+      "type": "float",
+      "default": 0.65,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "bedrock.region": {
+      "path": "bedrock.region",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "bedrock.discovery.enabled": {
+      "path": "bedrock.discovery.enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "bedrock.discovery.provider_filter": {
+      "path": "bedrock.discovery.provider_filter",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "bedrock.discovery.refresh_interval": {
+      "path": "bedrock.discovery.refresh_interval",
+      "type": "integer",
+      "default": 3600,
+      "enum": null,
+      "min_val": 60,
+      "max_val": 86400,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "bedrock.guardrail.guardrail_identifier": {
+      "path": "bedrock.guardrail.guardrail_identifier",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "bedrock.guardrail.guardrail_version": {
+      "path": "bedrock.guardrail.guardrail_version",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "bedrock.guardrail.stream_processing_mode": {
+      "path": "bedrock.guardrail.stream_processing_mode",
+      "type": "string",
+      "default": "async",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "bedrock.guardrail.trace": {
+      "path": "bedrock.guardrail.trace",
+      "type": "string",
+      "default": "disabled",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.vision.provider": {
+      "path": "auxiliary.vision.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.vision.model": {
+      "path": "auxiliary.vision.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.vision.base_url": {
+      "path": "auxiliary.vision.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.vision.api_key": {
+      "path": "auxiliary.vision.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.vision.timeout": {
+      "path": "auxiliary.vision.timeout",
+      "type": "integer",
+      "default": 120,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.vision.download_timeout": {
+      "path": "auxiliary.vision.download_timeout",
+      "type": "integer",
+      "default": 30,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.web_extract.provider": {
+      "path": "auxiliary.web_extract.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.web_extract.model": {
+      "path": "auxiliary.web_extract.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.web_extract.base_url": {
+      "path": "auxiliary.web_extract.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.web_extract.api_key": {
+      "path": "auxiliary.web_extract.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.web_extract.timeout": {
+      "path": "auxiliary.web_extract.timeout",
+      "type": "integer",
+      "default": 360,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.compression.provider": {
+      "path": "auxiliary.compression.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.compression.model": {
+      "path": "auxiliary.compression.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.compression.base_url": {
+      "path": "auxiliary.compression.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.compression.api_key": {
+      "path": "auxiliary.compression.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.compression.timeout": {
+      "path": "auxiliary.compression.timeout",
+      "type": "integer",
+      "default": 120,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.skills_hub.provider": {
+      "path": "auxiliary.skills_hub.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.skills_hub.model": {
+      "path": "auxiliary.skills_hub.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.skills_hub.base_url": {
+      "path": "auxiliary.skills_hub.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.skills_hub.api_key": {
+      "path": "auxiliary.skills_hub.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.skills_hub.timeout": {
+      "path": "auxiliary.skills_hub.timeout",
+      "type": "integer",
+      "default": 30,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.approval.provider": {
+      "path": "auxiliary.approval.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.approval.model": {
+      "path": "auxiliary.approval.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.approval.base_url": {
+      "path": "auxiliary.approval.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.approval.api_key": {
+      "path": "auxiliary.approval.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.approval.timeout": {
+      "path": "auxiliary.approval.timeout",
+      "type": "integer",
+      "default": 30,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.mcp.provider": {
+      "path": "auxiliary.mcp.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.mcp.model": {
+      "path": "auxiliary.mcp.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.mcp.base_url": {
+      "path": "auxiliary.mcp.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.mcp.api_key": {
+      "path": "auxiliary.mcp.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.mcp.timeout": {
+      "path": "auxiliary.mcp.timeout",
+      "type": "integer",
+      "default": 30,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.title_generation.provider": {
+      "path": "auxiliary.title_generation.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.title_generation.model": {
+      "path": "auxiliary.title_generation.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.title_generation.base_url": {
+      "path": "auxiliary.title_generation.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.title_generation.api_key": {
+      "path": "auxiliary.title_generation.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.title_generation.timeout": {
+      "path": "auxiliary.title_generation.timeout",
+      "type": "integer",
+      "default": 30,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.title_generation.language": {
+      "path": "auxiliary.title_generation.language",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.tts_audio_tags.provider": {
+      "path": "auxiliary.tts_audio_tags.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.tts_audio_tags.model": {
+      "path": "auxiliary.tts_audio_tags.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.tts_audio_tags.base_url": {
+      "path": "auxiliary.tts_audio_tags.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.tts_audio_tags.api_key": {
+      "path": "auxiliary.tts_audio_tags.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.tts_audio_tags.timeout": {
+      "path": "auxiliary.tts_audio_tags.timeout",
+      "type": "integer",
+      "default": 30,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.triage_specifier.provider": {
+      "path": "auxiliary.triage_specifier.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.triage_specifier.model": {
+      "path": "auxiliary.triage_specifier.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.triage_specifier.base_url": {
+      "path": "auxiliary.triage_specifier.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.triage_specifier.api_key": {
+      "path": "auxiliary.triage_specifier.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.triage_specifier.timeout": {
+      "path": "auxiliary.triage_specifier.timeout",
+      "type": "integer",
+      "default": 120,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.kanban_decomposer.provider": {
+      "path": "auxiliary.kanban_decomposer.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.kanban_decomposer.model": {
+      "path": "auxiliary.kanban_decomposer.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.kanban_decomposer.base_url": {
+      "path": "auxiliary.kanban_decomposer.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.kanban_decomposer.api_key": {
+      "path": "auxiliary.kanban_decomposer.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.kanban_decomposer.timeout": {
+      "path": "auxiliary.kanban_decomposer.timeout",
+      "type": "integer",
+      "default": 180,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.profile_describer.provider": {
+      "path": "auxiliary.profile_describer.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.profile_describer.model": {
+      "path": "auxiliary.profile_describer.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.profile_describer.base_url": {
+      "path": "auxiliary.profile_describer.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.profile_describer.api_key": {
+      "path": "auxiliary.profile_describer.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.profile_describer.timeout": {
+      "path": "auxiliary.profile_describer.timeout",
+      "type": "integer",
+      "default": 60,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.curator.provider": {
+      "path": "auxiliary.curator.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.curator.model": {
+      "path": "auxiliary.curator.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.curator.base_url": {
+      "path": "auxiliary.curator.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.curator.api_key": {
+      "path": "auxiliary.curator.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.curator.timeout": {
+      "path": "auxiliary.curator.timeout",
+      "type": "integer",
+      "default": 600,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.monitor.provider": {
+      "path": "auxiliary.monitor.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.monitor.model": {
+      "path": "auxiliary.monitor.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.monitor.base_url": {
+      "path": "auxiliary.monitor.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.monitor.api_key": {
+      "path": "auxiliary.monitor.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.monitor.timeout": {
+      "path": "auxiliary.monitor.timeout",
+      "type": "integer",
+      "default": 60,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.background_review.provider": {
+      "path": "auxiliary.background_review.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.background_review.model": {
+      "path": "auxiliary.background_review.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.background_review.base_url": {
+      "path": "auxiliary.background_review.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.background_review.api_key": {
+      "path": "auxiliary.background_review.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.background_review.timeout": {
+      "path": "auxiliary.background_review.timeout",
+      "type": "integer",
+      "default": 120,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.moa_reference.provider": {
+      "path": "auxiliary.moa_reference.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.moa_reference.model": {
+      "path": "auxiliary.moa_reference.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.moa_reference.base_url": {
+      "path": "auxiliary.moa_reference.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.moa_reference.api_key": {
+      "path": "auxiliary.moa_reference.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.moa_reference.timeout": {
+      "path": "auxiliary.moa_reference.timeout",
+      "type": "integer",
+      "default": 600,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.moa_aggregator.provider": {
+      "path": "auxiliary.moa_aggregator.provider",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.moa_aggregator.model": {
+      "path": "auxiliary.moa_aggregator.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.moa_aggregator.base_url": {
+      "path": "auxiliary.moa_aggregator.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.moa_aggregator.api_key": {
+      "path": "auxiliary.moa_aggregator.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "auxiliary.moa_aggregator.timeout": {
+      "path": "auxiliary.moa_aggregator.timeout",
+      "type": "integer",
+      "default": 600,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.compact": {
+      "path": "display.compact",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.personality": {
+      "path": "display.personality",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.resume_display": {
+      "path": "display.resume_display",
+      "type": "string",
+      "default": "full",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.resume_exchanges": {
+      "path": "display.resume_exchanges",
+      "type": "integer",
+      "default": 10,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 200,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.resume_max_user_chars": {
+      "path": "display.resume_max_user_chars",
+      "type": "integer",
+      "default": 300,
+      "enum": null,
+      "min_val": 50,
+      "max_val": 10000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.resume_max_assistant_chars": {
+      "path": "display.resume_max_assistant_chars",
+      "type": "integer",
+      "default": 200,
+      "enum": null,
+      "min_val": 50,
+      "max_val": 5000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.resume_max_assistant_lines": {
+      "path": "display.resume_max_assistant_lines",
+      "type": "integer",
+      "default": 3,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 100,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.resume_skip_tool_only": {
+      "path": "display.resume_skip_tool_only",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.busy_input_mode": {
+      "path": "display.busy_input_mode",
+      "type": "string",
+      "default": "interrupt",
+      "enum": [
+        "interrupt",
+        "queue",
+        "steer"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.interface": {
+      "path": "display.interface",
+      "type": "string",
+      "default": "cli",
+      "enum": [
+        "cli",
+        "tui"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.tui_auto_resume_recent": {
+      "path": "display.tui_auto_resume_recent",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.tui_agents_nudge": {
+      "path": "display.tui_agents_nudge",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.bell_on_complete": {
+      "path": "display.bell_on_complete",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.show_reasoning": {
+      "path": "display.show_reasoning",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.reasoning_full": {
+      "path": "display.reasoning_full",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.memory_notifications": {
+      "path": "display.memory_notifications",
+      "type": "string",
+      "default": "on",
+      "enum": [
+        "off",
+        "on",
+        "verbose"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.streaming": {
+      "path": "display.streaming",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.timestamps": {
+      "path": "display.timestamps",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.final_response_markdown": {
+      "path": "display.final_response_markdown",
+      "type": "string",
+      "default": "strip",
+      "enum": [
+        "render",
+        "strip",
+        "raw"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.persistent_output": {
+      "path": "display.persistent_output",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.persistent_output_max_lines": {
+      "path": "display.persistent_output_max_lines",
+      "type": "integer",
+      "default": 200,
+      "enum": null,
+      "min_val": 10,
+      "max_val": 10000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.persist_prompts": {
+      "path": "display.persist_prompts",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.inline_diffs": {
+      "path": "display.inline_diffs",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.file_mutation_verifier": {
+      "path": "display.file_mutation_verifier",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.credits_notices": {
+      "path": "display.credits_notices",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.turn_completion_explainer": {
+      "path": "display.turn_completion_explainer",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.show_cost": {
+      "path": "display.show_cost",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.skin": {
+      "path": "display.skin",
+      "type": "string",
+      "default": "default",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.language": {
+      "path": "display.language",
+      "type": "string",
+      "default": "en",
+      "enum": [
+        "en",
+        "zh",
+        "ja",
+        "de",
+        "es",
+        "fr",
+        "tr",
+        "uk"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.tui_status_indicator": {
+      "path": "display.tui_status_indicator",
+      "type": "string",
+      "default": "kaomoji",
+      "enum": [
+        "kaomoji",
+        "emoji",
+        "unicode",
+        "ascii"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.cli_refresh_interval": {
+      "path": "display.cli_refresh_interval",
+      "type": "float",
+      "default": 1.0,
+      "enum": null,
+      "min_val": 0.0,
+      "max_val": 60.0,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.user_message_preview.first_lines": {
+      "path": "display.user_message_preview.first_lines",
+      "type": "integer",
+      "default": 2,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 20,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.user_message_preview.last_lines": {
+      "path": "display.user_message_preview.last_lines",
+      "type": "integer",
+      "default": 2,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 20,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.interim_assistant_messages": {
+      "path": "display.interim_assistant_messages",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.tool_progress_command": {
+      "path": "display.tool_progress_command",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.tool_preview_length": {
+      "path": "display.tool_preview_length",
+      "type": "integer",
+      "default": 0,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 5000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.tool_progress_grouping": {
+      "path": "display.tool_progress_grouping",
+      "type": "string",
+      "default": "accumulate",
+      "enum": [
+        "accumulate",
+        "separate"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.reasoning_style": {
+      "path": "display.reasoning_style",
+      "type": "string",
+      "default": "code",
+      "enum": [
+        "code",
+        "blockquote",
+        "subtext"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.ephemeral_system_ttl": {
+      "path": "display.ephemeral_system_ttl",
+      "type": "integer",
+      "default": 0,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 3600,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.platforms.telegram.streaming": {
+      "path": "display.platforms.telegram.streaming",
+      "type": "boolean",
+      "default": true,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.platforms.discord.streaming": {
+      "path": "display.platforms.discord.streaming",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.runtime_footer.enabled": {
+      "path": "display.runtime_footer.enabled",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.runtime_footer.fields": {
+      "path": "display.runtime_footer.fields",
+      "type": "list",
+      "default": [
+        "model",
+        "context_pct",
+        "cwd"
+      ],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.copy_shortcut": {
+      "path": "display.copy_shortcut",
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "ctrl_c",
+        "ctrl_shift_c",
+        "disabled"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.pet.enabled": {
+      "path": "display.pet.enabled",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.pet.slug": {
+      "path": "display.pet.slug",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.pet.render_mode": {
+      "path": "display.pet.render_mode",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.pet.scale": {
+      "path": "display.pet.scale",
+      "type": "float",
+      "default": 0.33,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "display.pet.unicode_cols": {
+      "path": "display.pet.unicode_cols",
+      "type": "integer",
+      "default": 0,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "dashboard.theme": {
+      "path": "dashboard.theme",
+      "type": "string",
+      "default": "default",
+      "enum": [
+        "default",
+        "midnight",
+        "ember",
+        "mono",
+        "cyberpunk",
+        "rose"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "dashboard.show_token_analytics": {
+      "path": "dashboard.show_token_analytics",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "dashboard.oauth.client_id": {
+      "path": "dashboard.oauth.client_id",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "dashboard.oauth.portal_url": {
+      "path": "dashboard.oauth.portal_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "dashboard.basic_auth.username": {
+      "path": "dashboard.basic_auth.username",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "dashboard.basic_auth.password_hash": {
+      "path": "dashboard.basic_auth.password_hash",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "dashboard.basic_auth.password": {
+      "path": "dashboard.basic_auth.password",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "dashboard.basic_auth.secret": {
+      "path": "dashboard.basic_auth.secret",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "dashboard.basic_auth.session_ttl_seconds": {
+      "path": "dashboard.basic_auth.session_ttl_seconds",
+      "type": "integer",
+      "default": 0,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "dashboard.drain_auth.scope": {
+      "path": "dashboard.drain_auth.scope",
+      "type": "string",
+      "default": "drain",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "dashboard.drain_auth.min_secret_chars": {
+      "path": "dashboard.drain_auth.min_secret_chars",
+      "type": "integer",
+      "default": 43,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "dashboard.public_url": {
+      "path": "dashboard.public_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "privacy.redact_pii": {
+      "path": "privacy.redact_pii",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.provider": {
+      "path": "tts.provider",
+      "type": "string",
+      "default": "edge",
+      "enum": [
+        "edge",
+        "elevenlabs",
+        "openai",
+        "xai",
+        "minimax",
+        "mistral",
+        "gemini",
+        "neutts",
+        "kittentts",
+        "piper"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.edge.voice": {
+      "path": "tts.edge.voice",
+      "type": "string",
+      "default": "en-US-AriaNeural",
+      "enum": [
+        "en-US-AriaNeural",
+        "en-US-JennyNeural",
+        "en-US-AndrewNeural",
+        "en-US-BrianNeural",
+        "en-US-SoniaNeural"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.elevenlabs.voice_id": {
+      "path": "tts.elevenlabs.voice_id",
+      "type": "string",
+      "default": "pNInz6obpgDQGcFmaJgB",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.elevenlabs.model_id": {
+      "path": "tts.elevenlabs.model_id",
+      "type": "string",
+      "default": "eleven_multilingual_v2",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.openai.model": {
+      "path": "tts.openai.model",
+      "type": "string",
+      "default": "gpt-4o-mini-tts",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.openai.voice": {
+      "path": "tts.openai.voice",
+      "type": "string",
+      "default": "alloy",
+      "enum": [
+        "alloy",
+        "echo",
+        "fable",
+        "onyx",
+        "nova",
+        "shimmer"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.gemini.model": {
+      "path": "tts.gemini.model",
+      "type": "string",
+      "default": "gemini-2.5-flash-preview-tts",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.gemini.voice": {
+      "path": "tts.gemini.voice",
+      "type": "string",
+      "default": "Kore",
+      "enum": [
+        "Kore",
+        "Puck",
+        "Seren",
+        "Skye"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.gemini.audio_tags": {
+      "path": "tts.gemini.audio_tags",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.gemini.persona_prompt_file": {
+      "path": "tts.gemini.persona_prompt_file",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.xai.voice_id": {
+      "path": "tts.xai.voice_id",
+      "type": "string",
+      "default": "eve",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.xai.language": {
+      "path": "tts.xai.language",
+      "type": "string",
+      "default": "en",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.xai.sample_rate": {
+      "path": "tts.xai.sample_rate",
+      "type": "integer",
+      "default": 24000,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.xai.bit_rate": {
+      "path": "tts.xai.bit_rate",
+      "type": "integer",
+      "default": 128000,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.mistral.model": {
+      "path": "tts.mistral.model",
+      "type": "string",
+      "default": "voxtral-mini-tts-2603",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.mistral.voice_id": {
+      "path": "tts.mistral.voice_id",
+      "type": "string",
+      "default": "c69964a6-ab8b-4f8a-9465-ec0925096ec8",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.neutts.ref_audio": {
+      "path": "tts.neutts.ref_audio",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.neutts.ref_text": {
+      "path": "tts.neutts.ref_text",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.neutts.model": {
+      "path": "tts.neutts.model",
+      "type": "string",
+      "default": "neuphonic/neutts-air-q4-gguf",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.neutts.device": {
+      "path": "tts.neutts.device",
+      "type": "string",
+      "default": "cpu",
+      "enum": [
+        "cpu",
+        "cuda",
+        "mps"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tts.piper.voice": {
+      "path": "tts.piper.voice",
+      "type": "string",
+      "default": "en_US-lessac-medium",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "stt.enabled": {
+      "path": "stt.enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "stt.provider": {
+      "path": "stt.provider",
+      "type": "string",
+      "default": "local",
+      "enum": [
+        "local",
+        "groq",
+        "openai",
+        "mistral",
+        "elevenlabs"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "stt.local.model": {
+      "path": "stt.local.model",
+      "type": "string",
+      "default": "base",
+      "enum": [
+        "tiny",
+        "base",
+        "small",
+        "medium",
+        "large-v3"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "stt.local.language": {
+      "path": "stt.local.language",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "stt.openai.model": {
+      "path": "stt.openai.model",
+      "type": "string",
+      "default": "whisper-1",
+      "enum": [
+        "whisper-1",
+        "gpt-4o-mini-transcribe",
+        "gpt-4o-transcribe"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "stt.mistral.model": {
+      "path": "stt.mistral.model",
+      "type": "string",
+      "default": "voxtral-mini-latest",
+      "enum": [
+        "voxtral-mini-latest",
+        "voxtral-mini-2602"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "stt.elevenlabs.model_id": {
+      "path": "stt.elevenlabs.model_id",
+      "type": "string",
+      "default": "scribe_v2",
+      "enum": [
+        "scribe_v2",
+        "scribe_v1"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "stt.elevenlabs.language_code": {
+      "path": "stt.elevenlabs.language_code",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "stt.elevenlabs.tag_audio_events": {
+      "path": "stt.elevenlabs.tag_audio_events",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "stt.elevenlabs.diarize": {
+      "path": "stt.elevenlabs.diarize",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "voice.record_key": {
+      "path": "voice.record_key",
+      "type": "string",
+      "default": "ctrl+b",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "voice.max_recording_seconds": {
+      "path": "voice.max_recording_seconds",
+      "type": "integer",
+      "default": 120,
+      "enum": null,
+      "min_val": 5,
+      "max_val": 600,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "voice.auto_tts": {
+      "path": "voice.auto_tts",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "voice.beep_enabled": {
+      "path": "voice.beep_enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "voice.silence_threshold": {
+      "path": "voice.silence_threshold",
+      "type": "integer",
+      "default": 200,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 32767,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "voice.silence_duration": {
+      "path": "voice.silence_duration",
+      "type": "float",
+      "default": 3.0,
+      "enum": null,
+      "min_val": 0.5,
+      "max_val": 30.0,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "human_delay.mode": {
+      "path": "human_delay.mode",
+      "type": "string",
+      "default": "off",
+      "enum": [
+        "off",
+        "fixed",
+        "realistic",
+        "uniform"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "human_delay.min_ms": {
+      "path": "human_delay.min_ms",
+      "type": "integer",
+      "default": 800,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 10000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "human_delay.max_ms": {
+      "path": "human_delay.max_ms",
+      "type": "integer",
+      "default": 2500,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 30000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "context.engine": {
+      "path": "context.engine",
+      "type": "string",
+      "default": "compressor",
+      "enum": [
+        "compressor",
+        "lcm",
+        "dcp"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "memory.memory_enabled": {
+      "path": "memory.memory_enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "memory.user_profile_enabled": {
+      "path": "memory.user_profile_enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "memory.write_approval": {
+      "path": "memory.write_approval",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "memory.memory_char_limit": {
+      "path": "memory.memory_char_limit",
+      "type": "integer",
+      "default": 2200,
+      "enum": null,
+      "min_val": 100,
+      "max_val": 50000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "memory.user_char_limit": {
+      "path": "memory.user_char_limit",
+      "type": "integer",
+      "default": 1375,
+      "enum": null,
+      "min_val": 100,
+      "max_val": 30000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "memory.provider": {
+      "path": "memory.provider",
+      "type": "string",
+      "default": "",
+      "enum": [
+        "",
+        "openviking",
+        "mem0",
+        "hindsight",
+        "holographic",
+        "retaindb",
+        "byterover"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.model": {
+      "path": "delegation.model",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.provider": {
+      "path": "delegation.provider",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.base_url": {
+      "path": "delegation.base_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.api_key": {
+      "path": "delegation.api_key",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.api_mode": {
+      "path": "delegation.api_mode",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.inherit_mcp_toolsets": {
+      "path": "delegation.inherit_mcp_toolsets",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.max_iterations": {
+      "path": "delegation.max_iterations",
+      "type": "integer",
+      "default": 50,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 500,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.child_timeout_seconds": {
+      "path": "delegation.child_timeout_seconds",
+      "type": "integer",
+      "default": 0,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 36000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.reasoning_effort": {
+      "path": "delegation.reasoning_effort",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.max_concurrent_children": {
+      "path": "delegation.max_concurrent_children",
+      "type": "integer",
+      "default": 3,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 20,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.max_async_children": {
+      "path": "delegation.max_async_children",
+      "type": "integer",
+      "default": 3,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.max_spawn_depth": {
+      "path": "delegation.max_spawn_depth",
+      "type": "integer",
+      "default": 1,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 10,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.orchestrator_enabled": {
+      "path": "delegation.orchestrator_enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "delegation.subagent_auto_approve": {
+      "path": "delegation.subagent_auto_approve",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "prefill_messages_file": {
+      "path": "prefill_messages_file",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "Prefill Messages File configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "goals.max_turns": {
+      "path": "goals.max_turns",
+      "type": "integer",
+      "default": 20,
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100
+      ],
+      "min_val": 1,
+      "max_val": 500,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "moa.default_preset": {
+      "path": "moa.default_preset",
+      "type": "string",
+      "default": "default",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "moa.active_preset": {
+      "path": "moa.active_preset",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "moa.presets.default.reference_models": {
+      "path": "moa.presets.default.reference_models",
+      "type": "list",
+      "default": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.5"
+        },
+        {
+          "provider": "openrouter",
+          "model": "deepseek/deepseek-v4-pro"
+        }
+      ],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "moa.presets.default.aggregator.provider": {
+      "path": "moa.presets.default.aggregator.provider",
+      "type": "string",
+      "default": "openrouter",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "moa.presets.default.aggregator.model": {
+      "path": "moa.presets.default.aggregator.model",
+      "type": "string",
+      "default": "anthropic/claude-opus-4.8",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "moa.presets.default.reference_temperature": {
+      "path": "moa.presets.default.reference_temperature",
+      "type": "float",
+      "default": 0.6,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "moa.presets.default.aggregator_temperature": {
+      "path": "moa.presets.default.aggregator_temperature",
+      "type": "float",
+      "default": 0.4,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "moa.presets.default.max_tokens": {
+      "path": "moa.presets.default.max_tokens",
+      "type": "integer",
+      "default": 4096,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "moa.presets.default.enabled": {
+      "path": "moa.presets.default.enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "skills.external_dirs": {
+      "path": "skills.external_dirs",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "skills.template_vars": {
+      "path": "skills.template_vars",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "skills.inline_shell": {
+      "path": "skills.inline_shell",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "skills.inline_shell_timeout": {
+      "path": "skills.inline_shell_timeout",
+      "type": "integer",
+      "default": 10,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "skills.guard_agent_created": {
+      "path": "skills.guard_agent_created",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "skills.write_approval": {
+      "path": "skills.write_approval",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "curator.enabled": {
+      "path": "curator.enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "curator.interval_hours": {
+      "path": "curator.interval_hours",
+      "type": "integer",
+      "default": 168,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 720,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "curator.min_idle_hours": {
+      "path": "curator.min_idle_hours",
+      "type": "integer",
+      "default": 2,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 72,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "curator.stale_after_days": {
+      "path": "curator.stale_after_days",
+      "type": "integer",
+      "default": 30,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 365,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "curator.archive_after_days": {
+      "path": "curator.archive_after_days",
+      "type": "integer",
+      "default": 90,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 730,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "curator.consolidate": {
+      "path": "curator.consolidate",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "curator.prune_builtins": {
+      "path": "curator.prune_builtins",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "curator.backup.enabled": {
+      "path": "curator.backup.enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "curator.backup.keep": {
+      "path": "curator.backup.keep",
+      "type": "integer",
+      "default": 5,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 50,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "timezone": {
+      "path": "timezone",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "Timezone configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "slack.require_mention": {
+      "path": "slack.require_mention",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "slack.free_response_channels": {
+      "path": "slack.free_response_channels",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "slack.allowed_channels": {
+      "path": "slack.allowed_channels",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.require_mention": {
+      "path": "discord.require_mention",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.free_response_channels": {
+      "path": "discord.free_response_channels",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.allowed_channels": {
+      "path": "discord.allowed_channels",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.auto_thread": {
+      "path": "discord.auto_thread",
+      "type": "boolean",
+      "default": true,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.thread_require_mention": {
+      "path": "discord.thread_require_mention",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.history_backfill": {
+      "path": "discord.history_backfill",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.history_backfill_limit": {
+      "path": "discord.history_backfill_limit",
+      "type": "integer",
+      "default": 50,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.reactions": {
+      "path": "discord.reactions",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.dm_role_auth_guild": {
+      "path": "discord.dm_role_auth_guild",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.server_actions": {
+      "path": "discord.server_actions",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.allow_any_attachment": {
+      "path": "discord.allow_any_attachment",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.max_attachment_bytes": {
+      "path": "discord.max_attachment_bytes",
+      "type": "integer",
+      "default": 33554432,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.voice_fx.enabled": {
+      "path": "discord.voice_fx.enabled",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.voice_fx.ambient_enabled": {
+      "path": "discord.voice_fx.ambient_enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.voice_fx.ambient_path": {
+      "path": "discord.voice_fx.ambient_path",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.voice_fx.ambient_gain": {
+      "path": "discord.voice_fx.ambient_gain",
+      "type": "float",
+      "default": 0.18,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.voice_fx.duck_gain": {
+      "path": "discord.voice_fx.duck_gain",
+      "type": "float",
+      "default": 0.06,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.voice_fx.speech_gain": {
+      "path": "discord.voice_fx.speech_gain",
+      "type": "float",
+      "default": 1.0,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.voice_fx.ack_enabled": {
+      "path": "discord.voice_fx.ack_enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "discord.voice_fx.ack_phrases": {
+      "path": "discord.voice_fx.ack_phrases",
+      "type": "list",
+      "default": [
+        "Let me look into that.",
+        "One moment.",
+        "Checking on that now.",
+        "Give me a sec.",
+        "On it."
+      ],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "telegram.reactions": {
+      "path": "telegram.reactions",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "telegram.allowed_chats": {
+      "path": "telegram.allowed_chats",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "telegram.extra.rich_messages": {
+      "path": "telegram.extra.rich_messages",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "telegram.extra.rich_drafts": {
+      "path": "telegram.extra.rich_drafts",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "mattermost.require_mention": {
+      "path": "mattermost.require_mention",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "mattermost.free_response_channels": {
+      "path": "mattermost.free_response_channels",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "mattermost.allowed_channels": {
+      "path": "mattermost.allowed_channels",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "matrix.require_mention": {
+      "path": "matrix.require_mention",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "matrix.free_response_rooms": {
+      "path": "matrix.free_response_rooms",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "matrix.allowed_rooms": {
+      "path": "matrix.allowed_rooms",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "approvals.mode": {
+      "path": "approvals.mode",
+      "type": "string",
+      "default": "manual",
+      "enum": [
+        "manual",
+        "smart",
+        "off"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "approvals.timeout": {
+      "path": "approvals.timeout",
+      "type": "integer",
+      "default": 60,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "approvals.cron_mode": {
+      "path": "approvals.cron_mode",
+      "type": "string",
+      "default": "deny",
+      "enum": [
+        "deny",
+        "approve"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "approvals.mcp_reload_confirm": {
+      "path": "approvals.mcp_reload_confirm",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "approvals.destructive_slash_confirm": {
+      "path": "approvals.destructive_slash_confirm",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "command_allowlist": {
+      "path": "command_allowlist",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "Command Allowlist configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "hooks_auto_accept": {
+      "path": "hooks_auto_accept",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "Hooks Auto Accept configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "security.allow_private_urls": {
+      "path": "security.allow_private_urls",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "security.redact_secrets": {
+      "path": "security.redact_secrets",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "security.tirith_enabled": {
+      "path": "security.tirith_enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "security.tirith_path": {
+      "path": "security.tirith_path",
+      "type": "string",
+      "default": "tirith",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "security.tirith_timeout": {
+      "path": "security.tirith_timeout",
+      "type": "integer",
+      "default": 5,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 60,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "security.tirith_fail_open": {
+      "path": "security.tirith_fail_open",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "security.website_blocklist.enabled": {
+      "path": "security.website_blocklist.enabled",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "security.website_blocklist.domains": {
+      "path": "security.website_blocklist.domains",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "security.website_blocklist.shared_files": {
+      "path": "security.website_blocklist.shared_files",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "security.acked_advisories": {
+      "path": "security.acked_advisories",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "security.allow_lazy_installs": {
+      "path": "security.allow_lazy_installs",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "cron.provider": {
+      "path": "cron.provider",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "cron.chronos.portal_url": {
+      "path": "cron.chronos.portal_url",
+      "type": "string",
+      "default": "https://portal.nousresearch.com",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "cron.chronos.callback_url": {
+      "path": "cron.chronos.callback_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "cron.chronos.expected_audience": {
+      "path": "cron.chronos.expected_audience",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "cron.chronos.nas_jwks_url": {
+      "path": "cron.chronos.nas_jwks_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "cron.wrap_response": {
+      "path": "cron.wrap_response",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "cron.mirror_delivery": {
+      "path": "cron.mirror_delivery",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "cron.max_parallel_jobs": {
+      "path": "cron.max_parallel_jobs",
+      "type": "null",
+      "default": null,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 100,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "cron.output_retention": {
+      "path": "cron.output_retention",
+      "type": "integer",
+      "default": 50,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 500,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "code_execution.mode": {
+      "path": "code_execution.mode",
+      "type": "string",
+      "default": "project",
+      "enum": [
+        "project",
+        "strict"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tools.tool_search.enabled": {
+      "path": "tools.tool_search.enabled",
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "on",
+        "off"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tools.tool_search.threshold_pct": {
+      "path": "tools.tool_search.threshold_pct",
+      "type": "integer",
+      "default": 10,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 50,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tools.tool_search.search_default_limit": {
+      "path": "tools.tool_search.search_default_limit",
+      "type": "integer",
+      "default": 5,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 50,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "tools.tool_search.max_search_limit": {
+      "path": "tools.tool_search.max_search_limit",
+      "type": "integer",
+      "default": 20,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 50,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "logging.level": {
+      "path": "logging.level",
+      "type": "string",
+      "default": "INFO",
+      "enum": [
+        "DEBUG",
+        "INFO",
+        "WARNING"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "logging.max_size_mb": {
+      "path": "logging.max_size_mb",
+      "type": "integer",
+      "default": 5,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 500,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "logging.backup_count": {
+      "path": "logging.backup_count",
+      "type": "integer",
+      "default": 3,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 50,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "model_catalog.enabled": {
+      "path": "model_catalog.enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "model_catalog.url": {
+      "path": "model_catalog.url",
+      "type": "string",
+      "default": "https://hermes-agent.nousresearch.com/docs/api/model-catalog.json",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "model_catalog.ttl_hours": {
+      "path": "model_catalog.ttl_hours",
+      "type": "integer",
+      "default": 1,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 720,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "network.force_ipv4": {
+      "path": "network.force_ipv4",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "gateway.scale_to_zero.idle_timeout_minutes": {
+      "path": "gateway.scale_to_zero.idle_timeout_minutes",
+      "type": "integer",
+      "default": 5,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 60,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "gateway.message_timestamps.enabled": {
+      "path": "gateway.message_timestamps.enabled",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "gateway.max_inbound_media_bytes": {
+      "path": "gateway.max_inbound_media_bytes",
+      "type": "integer",
+      "default": 134217728,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 5000000000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "gateway.strict": {
+      "path": "gateway.strict",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "gateway.media_delivery_allow_dirs": {
+      "path": "gateway.media_delivery_allow_dirs",
+      "type": "list",
+      "default": [],
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "gateway.trust_recent_files": {
+      "path": "gateway.trust_recent_files",
+      "type": "boolean",
+      "default": true,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "gateway.trust_recent_files_seconds": {
+      "path": "gateway.trust_recent_files_seconds",
+      "type": "integer",
+      "default": 600,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 86400,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "gateway.api_server.max_concurrent_runs": {
+      "path": "gateway.api_server.max_concurrent_runs",
+      "type": "integer",
+      "default": 10,
+      "enum": null,
+      "min_val": 0,
+      "max_val": 1000,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "streaming.enabled": {
+      "path": "streaming.enabled",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "streaming.transport": {
+      "path": "streaming.transport",
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "draft",
+        "edit",
+        "off"
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "streaming.edit_interval": {
+      "path": "streaming.edit_interval",
+      "type": "float",
+      "default": 0.8,
+      "enum": null,
+      "min_val": 0.1,
+      "max_val": 10.0,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "streaming.buffer_threshold": {
+      "path": "streaming.buffer_threshold",
+      "type": "integer",
+      "default": 24,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 500,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "streaming.cursor": {
+      "path": "streaming.cursor",
+      "type": "string",
+      "default": " \u2589",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "streaming.fresh_final_after_seconds": {
+      "path": "streaming.fresh_final_after_seconds",
+      "type": "float",
+      "default": 0.0,
+      "enum": null,
+      "min_val": 0.0,
+      "max_val": 300.0,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "sessions.auto_prune": {
+      "path": "sessions.auto_prune",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "sessions.retention_days": {
+      "path": "sessions.retention_days",
+      "type": "integer",
+      "default": 90,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 730,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "sessions.vacuum_after_prune": {
+      "path": "sessions.vacuum_after_prune",
+      "type": "boolean",
+      "default": true,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "sessions.min_interval_hours": {
+      "path": "sessions.min_interval_hours",
+      "type": "integer",
+      "default": 24,
+      "enum": null,
+      "min_val": 1,
+      "max_val": 720,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "sessions.write_json_snapshots": {
+      "path": "sessions.write_json_snapshots",
+      "type": "boolean",
+      "default": false,
+      "enum": [
+        true,
+        false
+      ],
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "onboarding.profile_build": {
+      "path": "onboarding.profile_build",
+      "type": "string",
+      "default": "ask",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "updates.pre_update_backup": {
+      "path": "updates.pre_update_backup",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "updates.backup_keep": {
+      "path": "updates.backup_keep",
+      "type": "integer",
+      "default": 5,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "updates.non_interactive_local_changes": {
+      "path": "updates.non_interactive_local_changes",
+      "type": "string",
+      "default": "stash",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "lsp.enabled": {
+      "path": "lsp.enabled",
+      "type": "boolean",
+      "default": true,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "lsp.wait_mode": {
+      "path": "lsp.wait_mode",
+      "type": "string",
+      "default": "document",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "lsp.wait_timeout": {
+      "path": "lsp.wait_timeout",
+      "type": "float",
+      "default": 5.0,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "lsp.install_strategy": {
+      "path": "lsp.install_strategy",
+      "type": "string",
+      "default": "auto",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "x_search.model": {
+      "path": "x_search.model",
+      "type": "string",
+      "default": "grok-4.20-reasoning",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "x_search.timeout_seconds": {
+      "path": "x_search.timeout_seconds",
+      "type": "integer",
+      "default": 180,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "x_search.retries": {
+      "path": "x_search.retries",
+      "type": "integer",
+      "default": 2,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "secrets.bitwarden.enabled": {
+      "path": "secrets.bitwarden.enabled",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "secrets.bitwarden.access_token_env": {
+      "path": "secrets.bitwarden.access_token_env",
+      "type": "string",
+      "default": "BWS_ACCESS_TOKEN",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "secrets.bitwarden.project_id": {
+      "path": "secrets.bitwarden.project_id",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "secrets.bitwarden.cache_ttl_seconds": {
+      "path": "secrets.bitwarden.cache_ttl_seconds",
+      "type": "integer",
+      "default": 300,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "secrets.bitwarden.override_existing": {
+      "path": "secrets.bitwarden.override_existing",
+      "type": "boolean",
+      "default": true,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "secrets.bitwarden.auto_install": {
+      "path": "secrets.bitwarden.auto_install",
+      "type": "boolean",
+      "default": true,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "secrets.bitwarden.server_url": {
+      "path": "secrets.bitwarden.server_url",
+      "type": "string",
+      "default": "",
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "paste_collapse_threshold": {
+      "path": "paste_collapse_threshold",
+      "type": "integer",
+      "default": 5,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "Paste Collapse Threshold configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "paste_collapse_threshold_fallback": {
+      "path": "paste_collapse_threshold_fallback",
+      "type": "integer",
+      "default": 5,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "Paste Collapse Threshold Fallback configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "paste_collapse_char_threshold": {
+      "path": "paste_collapse_char_threshold",
+      "type": "integer",
+      "default": 2000,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "Paste Collapse Char Threshold configuration",
+      "required": false,
+      "version_added": 1
+    },
+    "computer_use.cua_telemetry": {
+      "path": "computer_use.cua_telemetry",
+      "type": "boolean",
+      "default": false,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": "",
+      "required": false,
+      "version_added": 1
+    },
+    "_config_version": {
+      "path": "_config_version",
+      "type": "integer",
+      "default": 30,
+      "enum": null,
+      "min_val": null,
+      "max_val": null,
+      "description": " Config Version configuration",
+      "required": false,
+      "version_added": 1
+    }
+  },
+  "sections": {
+    "providers": {
+      "path": "providers",
+      "children": [],
+      "description": "Providers configuration"
+    },
+    "credential_pool_strategies": {
+      "path": "credential_pool_strategies",
+      "children": [],
+      "description": "Credential Pool Strategies configuration"
+    },
+    "agent": {
+      "path": "agent",
+      "children": [
+        "agent.max_turns",
+        "agent.gateway_timeout",
+        "agent.restart_drain_timeout",
+        "agent.api_max_retries",
+        "agent.service_tier",
+        "agent.tool_use_enforcement",
+        "agent.task_completion_guidance",
+        "agent.parallel_tool_call_guidance",
+        "agent.environment_probe",
+        "agent.environment_hint",
+        "agent.coding_context",
+        "agent.verify_on_stop",
+        "agent.gateway_timeout_warning",
+        "agent.clarify_timeout",
+        "agent.gateway_notify_interval",
+        "agent.gateway_auto_continue_freshness",
+        "agent.image_input_mode",
+        "agent.disabled_toolsets"
+      ],
+      "description": "Agent configuration"
+    },
+    "terminal": {
+      "path": "terminal",
+      "children": [
+        "terminal.backend",
+        "terminal.modal_mode",
+        "terminal.cwd",
+        "terminal.timeout",
+        "terminal.daemon_term_grace_seconds",
+        "terminal.env_passthrough",
+        "terminal.home_mode",
+        "terminal.shell_init_files",
+        "terminal.auto_source_bashrc",
+        "terminal.docker_image",
+        "terminal.docker_forward_env",
+        "terminal.docker_env",
+        "terminal.singularity_image",
+        "terminal.modal_image",
+        "terminal.daytona_image",
+        "terminal.container_cpu",
+        "terminal.container_memory",
+        "terminal.container_disk",
+        "terminal.container_persistent",
+        "terminal.docker_volumes",
+        "terminal.docker_mount_cwd_to_workspace",
+        "terminal.docker_extra_args",
+        "terminal.docker_run_as_host_user",
+        "terminal.persistent_shell"
+      ],
+      "description": "Terminal configuration"
+    },
+    "terminal.docker_env": {
+      "path": "terminal.docker_env",
+      "children": [],
+      "description": ""
+    },
+    "web": {
+      "path": "web",
+      "children": [
+        "web.backend",
+        "web.search_backend",
+        "web.extract_backend"
+      ],
+      "description": "Web configuration"
+    },
+    "browser": {
+      "path": "browser",
+      "children": [
+        "browser.inactivity_timeout",
+        "browser.command_timeout",
+        "browser.record_sessions",
+        "browser.allow_private_urls",
+        "browser.engine",
+        "browser.auto_local_for_private_urls",
+        "browser.cdp_url",
+        "browser.dialog_policy",
+        "browser.dialog_timeout_s",
+        "browser.camofox"
+      ],
+      "description": "Browser configuration"
+    },
+    "browser.camofox": {
+      "path": "browser.camofox",
+      "children": [
+        "browser.camofox.managed_persistence",
+        "browser.camofox.user_id",
+        "browser.camofox.session_key",
+        "browser.camofox.adopt_existing_tab",
+        "browser.camofox.rewrite_loopback_urls",
+        "browser.camofox.loopback_host_alias"
+      ],
+      "description": ""
+    },
+    "checkpoints": {
+      "path": "checkpoints",
+      "children": [
+        "checkpoints.enabled",
+        "checkpoints.max_snapshots",
+        "checkpoints.max_total_size_mb",
+        "checkpoints.max_file_size_mb",
+        "checkpoints.auto_prune",
+        "checkpoints.retention_days",
+        "checkpoints.delete_orphans",
+        "checkpoints.min_interval_hours"
+      ],
+      "description": "Checkpoints configuration"
+    },
+    "tool_output": {
+      "path": "tool_output",
+      "children": [
+        "tool_output.max_bytes",
+        "tool_output.max_lines",
+        "tool_output.max_line_length"
+      ],
+      "description": "Tool Output configuration"
+    },
+    "tool_loop_guardrails": {
+      "path": "tool_loop_guardrails",
+      "children": [
+        "tool_loop_guardrails.warnings_enabled",
+        "tool_loop_guardrails.hard_stop_enabled",
+        "tool_loop_guardrails.warn_after",
+        "tool_loop_guardrails.hard_stop_after"
+      ],
+      "description": "Tool Loop Guardrails configuration"
+    },
+    "tool_loop_guardrails.warn_after": {
+      "path": "tool_loop_guardrails.warn_after",
+      "children": [
+        "tool_loop_guardrails.warn_after.exact_failure",
+        "tool_loop_guardrails.warn_after.same_tool_failure",
+        "tool_loop_guardrails.warn_after.idempotent_no_progress"
+      ],
+      "description": ""
+    },
+    "tool_loop_guardrails.hard_stop_after": {
+      "path": "tool_loop_guardrails.hard_stop_after",
+      "children": [
+        "tool_loop_guardrails.hard_stop_after.exact_failure",
+        "tool_loop_guardrails.hard_stop_after.same_tool_failure",
+        "tool_loop_guardrails.hard_stop_after.idempotent_no_progress"
+      ],
+      "description": ""
+    },
+    "compression": {
+      "path": "compression",
+      "children": [
+        "compression.enabled",
+        "compression.threshold",
+        "compression.target_ratio",
+        "compression.protect_last_n",
+        "compression.hygiene_hard_message_limit",
+        "compression.protect_first_n",
+        "compression.abort_on_summary_failure",
+        "compression.codex_gpt55_autoraise",
+        "compression.in_place"
+      ],
+      "description": "Compression configuration"
+    },
+    "kanban": {
+      "path": "kanban",
+      "children": [
+        "kanban.dispatch_in_gateway",
+        "kanban.dispatch_interval_seconds",
+        "kanban.failure_limit",
+        "kanban.worker_log_rotate_bytes",
+        "kanban.worker_log_backup_count",
+        "kanban.orchestrator_profile",
+        "kanban.default_assignee",
+        "kanban.max_in_progress_per_profile",
+        "kanban.auto_decompose",
+        "kanban.auto_decompose_per_tick",
+        "kanban.dispatch_stale_timeout_seconds"
+      ],
+      "description": "Kanban configuration"
+    },
+    "prompt_caching": {
+      "path": "prompt_caching",
+      "children": [
+        "prompt_caching.cache_ttl"
+      ],
+      "description": "Prompt Caching configuration"
+    },
+    "openrouter": {
+      "path": "openrouter",
+      "children": [
+        "openrouter.response_cache",
+        "openrouter.response_cache_ttl",
+        "openrouter.min_coding_score"
+      ],
+      "description": "Openrouter configuration"
+    },
+    "bedrock": {
+      "path": "bedrock",
+      "children": [
+        "bedrock.region",
+        "bedrock.discovery",
+        "bedrock.guardrail"
+      ],
+      "description": "Bedrock configuration"
+    },
+    "bedrock.discovery": {
+      "path": "bedrock.discovery",
+      "children": [
+        "bedrock.discovery.enabled",
+        "bedrock.discovery.provider_filter",
+        "bedrock.discovery.refresh_interval"
+      ],
+      "description": ""
+    },
+    "bedrock.guardrail": {
+      "path": "bedrock.guardrail",
+      "children": [
+        "bedrock.guardrail.guardrail_identifier",
+        "bedrock.guardrail.guardrail_version",
+        "bedrock.guardrail.stream_processing_mode",
+        "bedrock.guardrail.trace"
+      ],
+      "description": ""
+    },
+    "auxiliary": {
+      "path": "auxiliary",
+      "children": [
+        "auxiliary.vision",
+        "auxiliary.web_extract",
+        "auxiliary.compression",
+        "auxiliary.skills_hub",
+        "auxiliary.approval",
+        "auxiliary.mcp",
+        "auxiliary.title_generation",
+        "auxiliary.tts_audio_tags",
+        "auxiliary.triage_specifier",
+        "auxiliary.kanban_decomposer",
+        "auxiliary.profile_describer",
+        "auxiliary.curator",
+        "auxiliary.monitor",
+        "auxiliary.background_review",
+        "auxiliary.moa_reference",
+        "auxiliary.moa_aggregator"
+      ],
+      "description": "Auxiliary configuration"
+    },
+    "auxiliary.vision": {
+      "path": "auxiliary.vision",
+      "children": [
+        "auxiliary.vision.provider",
+        "auxiliary.vision.model",
+        "auxiliary.vision.base_url",
+        "auxiliary.vision.api_key",
+        "auxiliary.vision.timeout",
+        "auxiliary.vision.extra_body",
+        "auxiliary.vision.download_timeout"
+      ],
+      "description": ""
+    },
+    "auxiliary.vision.extra_body": {
+      "path": "auxiliary.vision.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.web_extract": {
+      "path": "auxiliary.web_extract",
+      "children": [
+        "auxiliary.web_extract.provider",
+        "auxiliary.web_extract.model",
+        "auxiliary.web_extract.base_url",
+        "auxiliary.web_extract.api_key",
+        "auxiliary.web_extract.timeout",
+        "auxiliary.web_extract.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.web_extract.extra_body": {
+      "path": "auxiliary.web_extract.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.compression": {
+      "path": "auxiliary.compression",
+      "children": [
+        "auxiliary.compression.provider",
+        "auxiliary.compression.model",
+        "auxiliary.compression.base_url",
+        "auxiliary.compression.api_key",
+        "auxiliary.compression.timeout",
+        "auxiliary.compression.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.compression.extra_body": {
+      "path": "auxiliary.compression.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.skills_hub": {
+      "path": "auxiliary.skills_hub",
+      "children": [
+        "auxiliary.skills_hub.provider",
+        "auxiliary.skills_hub.model",
+        "auxiliary.skills_hub.base_url",
+        "auxiliary.skills_hub.api_key",
+        "auxiliary.skills_hub.timeout",
+        "auxiliary.skills_hub.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.skills_hub.extra_body": {
+      "path": "auxiliary.skills_hub.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.approval": {
+      "path": "auxiliary.approval",
+      "children": [
+        "auxiliary.approval.provider",
+        "auxiliary.approval.model",
+        "auxiliary.approval.base_url",
+        "auxiliary.approval.api_key",
+        "auxiliary.approval.timeout",
+        "auxiliary.approval.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.approval.extra_body": {
+      "path": "auxiliary.approval.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.mcp": {
+      "path": "auxiliary.mcp",
+      "children": [
+        "auxiliary.mcp.provider",
+        "auxiliary.mcp.model",
+        "auxiliary.mcp.base_url",
+        "auxiliary.mcp.api_key",
+        "auxiliary.mcp.timeout",
+        "auxiliary.mcp.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.mcp.extra_body": {
+      "path": "auxiliary.mcp.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.title_generation": {
+      "path": "auxiliary.title_generation",
+      "children": [
+        "auxiliary.title_generation.provider",
+        "auxiliary.title_generation.model",
+        "auxiliary.title_generation.base_url",
+        "auxiliary.title_generation.api_key",
+        "auxiliary.title_generation.timeout",
+        "auxiliary.title_generation.extra_body",
+        "auxiliary.title_generation.language"
+      ],
+      "description": ""
+    },
+    "auxiliary.title_generation.extra_body": {
+      "path": "auxiliary.title_generation.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.tts_audio_tags": {
+      "path": "auxiliary.tts_audio_tags",
+      "children": [
+        "auxiliary.tts_audio_tags.provider",
+        "auxiliary.tts_audio_tags.model",
+        "auxiliary.tts_audio_tags.base_url",
+        "auxiliary.tts_audio_tags.api_key",
+        "auxiliary.tts_audio_tags.timeout",
+        "auxiliary.tts_audio_tags.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.tts_audio_tags.extra_body": {
+      "path": "auxiliary.tts_audio_tags.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.triage_specifier": {
+      "path": "auxiliary.triage_specifier",
+      "children": [
+        "auxiliary.triage_specifier.provider",
+        "auxiliary.triage_specifier.model",
+        "auxiliary.triage_specifier.base_url",
+        "auxiliary.triage_specifier.api_key",
+        "auxiliary.triage_specifier.timeout",
+        "auxiliary.triage_specifier.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.triage_specifier.extra_body": {
+      "path": "auxiliary.triage_specifier.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.kanban_decomposer": {
+      "path": "auxiliary.kanban_decomposer",
+      "children": [
+        "auxiliary.kanban_decomposer.provider",
+        "auxiliary.kanban_decomposer.model",
+        "auxiliary.kanban_decomposer.base_url",
+        "auxiliary.kanban_decomposer.api_key",
+        "auxiliary.kanban_decomposer.timeout",
+        "auxiliary.kanban_decomposer.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.kanban_decomposer.extra_body": {
+      "path": "auxiliary.kanban_decomposer.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.profile_describer": {
+      "path": "auxiliary.profile_describer",
+      "children": [
+        "auxiliary.profile_describer.provider",
+        "auxiliary.profile_describer.model",
+        "auxiliary.profile_describer.base_url",
+        "auxiliary.profile_describer.api_key",
+        "auxiliary.profile_describer.timeout",
+        "auxiliary.profile_describer.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.profile_describer.extra_body": {
+      "path": "auxiliary.profile_describer.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.curator": {
+      "path": "auxiliary.curator",
+      "children": [
+        "auxiliary.curator.provider",
+        "auxiliary.curator.model",
+        "auxiliary.curator.base_url",
+        "auxiliary.curator.api_key",
+        "auxiliary.curator.timeout",
+        "auxiliary.curator.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.curator.extra_body": {
+      "path": "auxiliary.curator.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.monitor": {
+      "path": "auxiliary.monitor",
+      "children": [
+        "auxiliary.monitor.provider",
+        "auxiliary.monitor.model",
+        "auxiliary.monitor.base_url",
+        "auxiliary.monitor.api_key",
+        "auxiliary.monitor.timeout",
+        "auxiliary.monitor.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.monitor.extra_body": {
+      "path": "auxiliary.monitor.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.background_review": {
+      "path": "auxiliary.background_review",
+      "children": [
+        "auxiliary.background_review.provider",
+        "auxiliary.background_review.model",
+        "auxiliary.background_review.base_url",
+        "auxiliary.background_review.api_key",
+        "auxiliary.background_review.timeout",
+        "auxiliary.background_review.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.background_review.extra_body": {
+      "path": "auxiliary.background_review.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.moa_reference": {
+      "path": "auxiliary.moa_reference",
+      "children": [
+        "auxiliary.moa_reference.provider",
+        "auxiliary.moa_reference.model",
+        "auxiliary.moa_reference.base_url",
+        "auxiliary.moa_reference.api_key",
+        "auxiliary.moa_reference.timeout",
+        "auxiliary.moa_reference.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.moa_reference.extra_body": {
+      "path": "auxiliary.moa_reference.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "auxiliary.moa_aggregator": {
+      "path": "auxiliary.moa_aggregator",
+      "children": [
+        "auxiliary.moa_aggregator.provider",
+        "auxiliary.moa_aggregator.model",
+        "auxiliary.moa_aggregator.base_url",
+        "auxiliary.moa_aggregator.api_key",
+        "auxiliary.moa_aggregator.timeout",
+        "auxiliary.moa_aggregator.extra_body"
+      ],
+      "description": ""
+    },
+    "auxiliary.moa_aggregator.extra_body": {
+      "path": "auxiliary.moa_aggregator.extra_body",
+      "children": [],
+      "description": ""
+    },
+    "display": {
+      "path": "display",
+      "children": [
+        "display.compact",
+        "display.personality",
+        "display.resume_display",
+        "display.resume_exchanges",
+        "display.resume_max_user_chars",
+        "display.resume_max_assistant_chars",
+        "display.resume_max_assistant_lines",
+        "display.resume_skip_tool_only",
+        "display.busy_input_mode",
+        "display.interface",
+        "display.tui_auto_resume_recent",
+        "display.tui_agents_nudge",
+        "display.bell_on_complete",
+        "display.show_reasoning",
+        "display.reasoning_full",
+        "display.memory_notifications",
+        "display.streaming",
+        "display.timestamps",
+        "display.final_response_markdown",
+        "display.persistent_output",
+        "display.persistent_output_max_lines",
+        "display.persist_prompts",
+        "display.inline_diffs",
+        "display.file_mutation_verifier",
+        "display.credits_notices",
+        "display.turn_completion_explainer",
+        "display.show_cost",
+        "display.skin",
+        "display.language",
+        "display.tui_status_indicator",
+        "display.cli_refresh_interval",
+        "display.user_message_preview",
+        "display.interim_assistant_messages",
+        "display.tool_progress_command",
+        "display.tool_progress_overrides",
+        "display.tool_preview_length",
+        "display.tool_progress_grouping",
+        "display.reasoning_style",
+        "display.ephemeral_system_ttl",
+        "display.platforms",
+        "display.runtime_footer",
+        "display.copy_shortcut",
+        "display.pet"
+      ],
+      "description": "Display configuration"
+    },
+    "display.user_message_preview": {
+      "path": "display.user_message_preview",
+      "children": [
+        "display.user_message_preview.first_lines",
+        "display.user_message_preview.last_lines"
+      ],
+      "description": ""
+    },
+    "display.tool_progress_overrides": {
+      "path": "display.tool_progress_overrides",
+      "children": [],
+      "description": ""
+    },
+    "display.platforms": {
+      "path": "display.platforms",
+      "children": [
+        "display.platforms.telegram",
+        "display.platforms.discord"
+      ],
+      "description": ""
+    },
+    "display.platforms.telegram": {
+      "path": "display.platforms.telegram",
+      "children": [
+        "display.platforms.telegram.streaming"
+      ],
+      "description": ""
+    },
+    "display.platforms.discord": {
+      "path": "display.platforms.discord",
+      "children": [
+        "display.platforms.discord.streaming"
+      ],
+      "description": ""
+    },
+    "display.runtime_footer": {
+      "path": "display.runtime_footer",
+      "children": [
+        "display.runtime_footer.enabled",
+        "display.runtime_footer.fields"
+      ],
+      "description": ""
+    },
+    "display.pet": {
+      "path": "display.pet",
+      "children": [
+        "display.pet.enabled",
+        "display.pet.slug",
+        "display.pet.render_mode",
+        "display.pet.scale",
+        "display.pet.unicode_cols"
+      ],
+      "description": ""
+    },
+    "dashboard": {
+      "path": "dashboard",
+      "children": [
+        "dashboard.theme",
+        "dashboard.show_token_analytics",
+        "dashboard.oauth",
+        "dashboard.basic_auth",
+        "dashboard.drain_auth",
+        "dashboard.public_url"
+      ],
+      "description": "Dashboard configuration"
+    },
+    "dashboard.oauth": {
+      "path": "dashboard.oauth",
+      "children": [
+        "dashboard.oauth.client_id",
+        "dashboard.oauth.portal_url"
+      ],
+      "description": ""
+    },
+    "dashboard.basic_auth": {
+      "path": "dashboard.basic_auth",
+      "children": [
+        "dashboard.basic_auth.username",
+        "dashboard.basic_auth.password_hash",
+        "dashboard.basic_auth.password",
+        "dashboard.basic_auth.secret",
+        "dashboard.basic_auth.session_ttl_seconds"
+      ],
+      "description": ""
+    },
+    "dashboard.drain_auth": {
+      "path": "dashboard.drain_auth",
+      "children": [
+        "dashboard.drain_auth.scope",
+        "dashboard.drain_auth.min_secret_chars"
+      ],
+      "description": ""
+    },
+    "privacy": {
+      "path": "privacy",
+      "children": [
+        "privacy.redact_pii"
+      ],
+      "description": "Privacy configuration"
+    },
+    "tts": {
+      "path": "tts",
+      "children": [
+        "tts.provider",
+        "tts.edge",
+        "tts.elevenlabs",
+        "tts.openai",
+        "tts.gemini",
+        "tts.xai",
+        "tts.mistral",
+        "tts.neutts",
+        "tts.piper"
+      ],
+      "description": "Tts configuration"
+    },
+    "tts.edge": {
+      "path": "tts.edge",
+      "children": [
+        "tts.edge.voice"
+      ],
+      "description": ""
+    },
+    "tts.elevenlabs": {
+      "path": "tts.elevenlabs",
+      "children": [
+        "tts.elevenlabs.voice_id",
+        "tts.elevenlabs.model_id"
+      ],
+      "description": ""
+    },
+    "tts.openai": {
+      "path": "tts.openai",
+      "children": [
+        "tts.openai.model",
+        "tts.openai.voice"
+      ],
+      "description": ""
+    },
+    "tts.gemini": {
+      "path": "tts.gemini",
+      "children": [
+        "tts.gemini.model",
+        "tts.gemini.voice",
+        "tts.gemini.audio_tags",
+        "tts.gemini.persona_prompt_file"
+      ],
+      "description": ""
+    },
+    "tts.xai": {
+      "path": "tts.xai",
+      "children": [
+        "tts.xai.voice_id",
+        "tts.xai.language",
+        "tts.xai.sample_rate",
+        "tts.xai.bit_rate"
+      ],
+      "description": ""
+    },
+    "tts.mistral": {
+      "path": "tts.mistral",
+      "children": [
+        "tts.mistral.model",
+        "tts.mistral.voice_id"
+      ],
+      "description": ""
+    },
+    "tts.neutts": {
+      "path": "tts.neutts",
+      "children": [
+        "tts.neutts.ref_audio",
+        "tts.neutts.ref_text",
+        "tts.neutts.model",
+        "tts.neutts.device"
+      ],
+      "description": ""
+    },
+    "tts.piper": {
+      "path": "tts.piper",
+      "children": [
+        "tts.piper.voice"
+      ],
+      "description": ""
+    },
+    "stt": {
+      "path": "stt",
+      "children": [
+        "stt.enabled",
+        "stt.provider",
+        "stt.local",
+        "stt.openai",
+        "stt.mistral",
+        "stt.elevenlabs"
+      ],
+      "description": "Stt configuration"
+    },
+    "stt.local": {
+      "path": "stt.local",
+      "children": [
+        "stt.local.model",
+        "stt.local.language"
+      ],
+      "description": ""
+    },
+    "stt.openai": {
+      "path": "stt.openai",
+      "children": [
+        "stt.openai.model"
+      ],
+      "description": ""
+    },
+    "stt.mistral": {
+      "path": "stt.mistral",
+      "children": [
+        "stt.mistral.model"
+      ],
+      "description": ""
+    },
+    "stt.elevenlabs": {
+      "path": "stt.elevenlabs",
+      "children": [
+        "stt.elevenlabs.model_id",
+        "stt.elevenlabs.language_code",
+        "stt.elevenlabs.tag_audio_events",
+        "stt.elevenlabs.diarize"
+      ],
+      "description": ""
+    },
+    "voice": {
+      "path": "voice",
+      "children": [
+        "voice.record_key",
+        "voice.max_recording_seconds",
+        "voice.auto_tts",
+        "voice.beep_enabled",
+        "voice.silence_threshold",
+        "voice.silence_duration"
+      ],
+      "description": "Voice configuration"
+    },
+    "human_delay": {
+      "path": "human_delay",
+      "children": [
+        "human_delay.mode",
+        "human_delay.min_ms",
+        "human_delay.max_ms"
+      ],
+      "description": "Human Delay configuration"
+    },
+    "context": {
+      "path": "context",
+      "children": [
+        "context.engine"
+      ],
+      "description": "Context configuration"
+    },
+    "memory": {
+      "path": "memory",
+      "children": [
+        "memory.memory_enabled",
+        "memory.user_profile_enabled",
+        "memory.write_approval",
+        "memory.memory_char_limit",
+        "memory.user_char_limit",
+        "memory.provider"
+      ],
+      "description": "Memory configuration"
+    },
+    "delegation": {
+      "path": "delegation",
+      "children": [
+        "delegation.model",
+        "delegation.provider",
+        "delegation.base_url",
+        "delegation.api_key",
+        "delegation.api_mode",
+        "delegation.inherit_mcp_toolsets",
+        "delegation.max_iterations",
+        "delegation.child_timeout_seconds",
+        "delegation.reasoning_effort",
+        "delegation.max_concurrent_children",
+        "delegation.max_async_children",
+        "delegation.max_spawn_depth",
+        "delegation.orchestrator_enabled",
+        "delegation.subagent_auto_approve"
+      ],
+      "description": "Delegation configuration"
+    },
+    "goals": {
+      "path": "goals",
+      "children": [
+        "goals.max_turns"
+      ],
+      "description": "Goals configuration"
+    },
+    "moa": {
+      "path": "moa",
+      "children": [
+        "moa.default_preset",
+        "moa.active_preset",
+        "moa.presets"
+      ],
+      "description": "Moa configuration"
+    },
+    "moa.presets": {
+      "path": "moa.presets",
+      "children": [
+        "moa.presets.default"
+      ],
+      "description": ""
+    },
+    "moa.presets.default": {
+      "path": "moa.presets.default",
+      "children": [
+        "moa.presets.default.reference_models",
+        "moa.presets.default.aggregator",
+        "moa.presets.default.reference_temperature",
+        "moa.presets.default.aggregator_temperature",
+        "moa.presets.default.max_tokens",
+        "moa.presets.default.enabled"
+      ],
+      "description": ""
+    },
+    "moa.presets.default.aggregator": {
+      "path": "moa.presets.default.aggregator",
+      "children": [
+        "moa.presets.default.aggregator.provider",
+        "moa.presets.default.aggregator.model"
+      ],
+      "description": ""
+    },
+    "skills": {
+      "path": "skills",
+      "children": [
+        "skills.external_dirs",
+        "skills.template_vars",
+        "skills.inline_shell",
+        "skills.inline_shell_timeout",
+        "skills.guard_agent_created",
+        "skills.write_approval"
+      ],
+      "description": "Skills configuration"
+    },
+    "curator": {
+      "path": "curator",
+      "children": [
+        "curator.enabled",
+        "curator.interval_hours",
+        "curator.min_idle_hours",
+        "curator.stale_after_days",
+        "curator.archive_after_days",
+        "curator.consolidate",
+        "curator.prune_builtins",
+        "curator.backup"
+      ],
+      "description": "Curator configuration"
+    },
+    "curator.backup": {
+      "path": "curator.backup",
+      "children": [
+        "curator.backup.enabled",
+        "curator.backup.keep"
+      ],
+      "description": ""
+    },
+    "honcho": {
+      "path": "honcho",
+      "children": [],
+      "description": "Honcho configuration"
+    },
+    "slack": {
+      "path": "slack",
+      "children": [
+        "slack.require_mention",
+        "slack.free_response_channels",
+        "slack.allowed_channels",
+        "slack.channel_prompts"
+      ],
+      "description": "Slack configuration"
+    },
+    "slack.channel_prompts": {
+      "path": "slack.channel_prompts",
+      "children": [],
+      "description": ""
+    },
+    "discord": {
+      "path": "discord",
+      "children": [
+        "discord.require_mention",
+        "discord.free_response_channels",
+        "discord.allowed_channels",
+        "discord.auto_thread",
+        "discord.thread_require_mention",
+        "discord.history_backfill",
+        "discord.history_backfill_limit",
+        "discord.reactions",
+        "discord.channel_prompts",
+        "discord.dm_role_auth_guild",
+        "discord.server_actions",
+        "discord.allow_any_attachment",
+        "discord.max_attachment_bytes",
+        "discord.voice_fx"
+      ],
+      "description": "Discord configuration"
+    },
+    "discord.channel_prompts": {
+      "path": "discord.channel_prompts",
+      "children": [],
+      "description": ""
+    },
+    "discord.voice_fx": {
+      "path": "discord.voice_fx",
+      "children": [
+        "discord.voice_fx.enabled",
+        "discord.voice_fx.ambient_enabled",
+        "discord.voice_fx.ambient_path",
+        "discord.voice_fx.ambient_gain",
+        "discord.voice_fx.duck_gain",
+        "discord.voice_fx.speech_gain",
+        "discord.voice_fx.ack_enabled",
+        "discord.voice_fx.ack_phrases"
+      ],
+      "description": ""
+    },
+    "whatsapp": {
+      "path": "whatsapp",
+      "children": [],
+      "description": "Whatsapp configuration"
+    },
+    "telegram": {
+      "path": "telegram",
+      "children": [
+        "telegram.reactions",
+        "telegram.channel_prompts",
+        "telegram.allowed_chats",
+        "telegram.extra"
+      ],
+      "description": "Telegram configuration"
+    },
+    "telegram.channel_prompts": {
+      "path": "telegram.channel_prompts",
+      "children": [],
+      "description": ""
+    },
+    "telegram.extra": {
+      "path": "telegram.extra",
+      "children": [
+        "telegram.extra.rich_messages",
+        "telegram.extra.rich_drafts"
+      ],
+      "description": ""
+    },
+    "mattermost": {
+      "path": "mattermost",
+      "children": [
+        "mattermost.require_mention",
+        "mattermost.free_response_channels",
+        "mattermost.allowed_channels",
+        "mattermost.channel_prompts"
+      ],
+      "description": "Mattermost configuration"
+    },
+    "mattermost.channel_prompts": {
+      "path": "mattermost.channel_prompts",
+      "children": [],
+      "description": ""
+    },
+    "matrix": {
+      "path": "matrix",
+      "children": [
+        "matrix.require_mention",
+        "matrix.free_response_rooms",
+        "matrix.allowed_rooms"
+      ],
+      "description": "Matrix configuration"
+    },
+    "approvals": {
+      "path": "approvals",
+      "children": [
+        "approvals.mode",
+        "approvals.timeout",
+        "approvals.cron_mode",
+        "approvals.mcp_reload_confirm",
+        "approvals.destructive_slash_confirm"
+      ],
+      "description": "Approvals configuration"
+    },
+    "quick_commands": {
+      "path": "quick_commands",
+      "children": [],
+      "description": "Quick Commands configuration"
+    },
+    "platform_hints": {
+      "path": "platform_hints",
+      "children": [],
+      "description": "Platform Hints configuration"
+    },
+    "hooks": {
+      "path": "hooks",
+      "children": [],
+      "description": "Hooks configuration"
+    },
+    "personalities": {
+      "path": "personalities",
+      "children": [],
+      "description": "Personalities configuration"
+    },
+    "security": {
+      "path": "security",
+      "children": [
+        "security.allow_private_urls",
+        "security.redact_secrets",
+        "security.tirith_enabled",
+        "security.tirith_path",
+        "security.tirith_timeout",
+        "security.tirith_fail_open",
+        "security.website_blocklist",
+        "security.acked_advisories",
+        "security.allow_lazy_installs"
+      ],
+      "description": "Security configuration"
+    },
+    "security.website_blocklist": {
+      "path": "security.website_blocklist",
+      "children": [
+        "security.website_blocklist.enabled",
+        "security.website_blocklist.domains",
+        "security.website_blocklist.shared_files"
+      ],
+      "description": ""
+    },
+    "cron": {
+      "path": "cron",
+      "children": [
+        "cron.provider",
+        "cron.chronos",
+        "cron.wrap_response",
+        "cron.mirror_delivery",
+        "cron.max_parallel_jobs",
+        "cron.output_retention"
+      ],
+      "description": "Cron configuration"
+    },
+    "cron.chronos": {
+      "path": "cron.chronos",
+      "children": [
+        "cron.chronos.portal_url",
+        "cron.chronos.callback_url",
+        "cron.chronos.expected_audience",
+        "cron.chronos.nas_jwks_url"
+      ],
+      "description": ""
+    },
+    "code_execution": {
+      "path": "code_execution",
+      "children": [
+        "code_execution.mode"
+      ],
+      "description": "Code Execution configuration"
+    },
+    "tools": {
+      "path": "tools",
+      "children": [
+        "tools.tool_search"
+      ],
+      "description": "Tools configuration"
+    },
+    "tools.tool_search": {
+      "path": "tools.tool_search",
+      "children": [
+        "tools.tool_search.enabled",
+        "tools.tool_search.threshold_pct",
+        "tools.tool_search.search_default_limit",
+        "tools.tool_search.max_search_limit"
+      ],
+      "description": ""
+    },
+    "logging": {
+      "path": "logging",
+      "children": [
+        "logging.level",
+        "logging.max_size_mb",
+        "logging.backup_count"
+      ],
+      "description": "Logging configuration"
+    },
+    "model_catalog": {
+      "path": "model_catalog",
+      "children": [
+        "model_catalog.enabled",
+        "model_catalog.url",
+        "model_catalog.ttl_hours",
+        "model_catalog.providers"
+      ],
+      "description": "Model Catalog configuration"
+    },
+    "model_catalog.providers": {
+      "path": "model_catalog.providers",
+      "children": [],
+      "description": ""
+    },
+    "network": {
+      "path": "network",
+      "children": [
+        "network.force_ipv4"
+      ],
+      "description": "Network configuration"
+    },
+    "gateway": {
+      "path": "gateway",
+      "children": [
+        "gateway.scale_to_zero",
+        "gateway.message_timestamps",
+        "gateway.max_inbound_media_bytes",
+        "gateway.strict",
+        "gateway.media_delivery_allow_dirs",
+        "gateway.trust_recent_files",
+        "gateway.trust_recent_files_seconds",
+        "gateway.api_server"
+      ],
+      "description": "Gateway configuration"
+    },
+    "gateway.scale_to_zero": {
+      "path": "gateway.scale_to_zero",
+      "children": [
+        "gateway.scale_to_zero.idle_timeout_minutes"
+      ],
+      "description": ""
+    },
+    "gateway.message_timestamps": {
+      "path": "gateway.message_timestamps",
+      "children": [
+        "gateway.message_timestamps.enabled"
+      ],
+      "description": ""
+    },
+    "gateway.api_server": {
+      "path": "gateway.api_server",
+      "children": [
+        "gateway.api_server.max_concurrent_runs"
+      ],
+      "description": ""
+    },
+    "streaming": {
+      "path": "streaming",
+      "children": [
+        "streaming.enabled",
+        "streaming.transport",
+        "streaming.edit_interval",
+        "streaming.buffer_threshold",
+        "streaming.cursor",
+        "streaming.fresh_final_after_seconds"
+      ],
+      "description": "Streaming configuration"
+    },
+    "sessions": {
+      "path": "sessions",
+      "children": [
+        "sessions.auto_prune",
+        "sessions.retention_days",
+        "sessions.vacuum_after_prune",
+        "sessions.min_interval_hours",
+        "sessions.write_json_snapshots"
+      ],
+      "description": "Sessions configuration"
+    },
+    "onboarding": {
+      "path": "onboarding",
+      "children": [
+        "onboarding.seen",
+        "onboarding.profile_build"
+      ],
+      "description": "Onboarding configuration"
+    },
+    "onboarding.seen": {
+      "path": "onboarding.seen",
+      "children": [],
+      "description": ""
+    },
+    "updates": {
+      "path": "updates",
+      "children": [
+        "updates.pre_update_backup",
+        "updates.backup_keep",
+        "updates.non_interactive_local_changes"
+      ],
+      "description": "Updates configuration"
+    },
+    "lsp": {
+      "path": "lsp",
+      "children": [
+        "lsp.enabled",
+        "lsp.wait_mode",
+        "lsp.wait_timeout",
+        "lsp.install_strategy",
+        "lsp.servers"
+      ],
+      "description": "Lsp configuration"
+    },
+    "lsp.servers": {
+      "path": "lsp.servers",
+      "children": [],
+      "description": ""
+    },
+    "x_search": {
+      "path": "x_search",
+      "children": [
+        "x_search.model",
+        "x_search.timeout_seconds",
+        "x_search.retries"
+      ],
+      "description": "X Search configuration"
+    },
+    "secrets": {
+      "path": "secrets",
+      "children": [
+        "secrets.bitwarden"
+      ],
+      "description": "Secrets configuration"
+    },
+    "secrets.bitwarden": {
+      "path": "secrets.bitwarden",
+      "children": [
+        "secrets.bitwarden.enabled",
+        "secrets.bitwarden.access_token_env",
+        "secrets.bitwarden.project_id",
+        "secrets.bitwarden.cache_ttl_seconds",
+        "secrets.bitwarden.override_existing",
+        "secrets.bitwarden.auto_install",
+        "secrets.bitwarden.server_url"
+      ],
+      "description": ""
+    },
+    "computer_use": {
+      "path": "computer_use",
+      "children": [
+        "computer_use.cua_telemetry"
+      ],
+      "description": "Computer Use configuration"
+    }
+  },
+  "param_count": 464,
+  "section_count": 137
+}
