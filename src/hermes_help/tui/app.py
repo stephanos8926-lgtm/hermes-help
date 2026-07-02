@@ -14,6 +14,9 @@ from textual.containers import Horizontal, Vertical
 from textual import on
 
 from hermes_help.schema.static import compile_from_hermes
+from hermes_help.tui.widgets.param_editor import ParamEditor, _control_type_for_param
+from hermes_help.schema.validator import Validator
+from hermes_help.tui.screens import ExportScreen
 
 logger = logging.getLogger(__name__)
 
@@ -63,9 +66,15 @@ class HermesHelpApp(App):
     }
     """
 
+    BINDINGS = [
+        ("e", "export", "Export"),
+        ("slash", "focus_search", "Search"),
+    ]
+
     def __init__(self):
         super().__init__()
         self._schema = compile_from_hermes()
+        self._validator = Validator(self._schema) if self._schema else None
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -185,7 +194,7 @@ class HermesHelpApp(App):
             count_widget.update(f"Showing all {total_params} parameters")
 
     def on_tree_node_selected(self, event: Tree.NodeSelected) -> None:
-        """Show parameter detail on node selection."""
+        """Show parameter detail or ParamEditor on node selection."""
         if not event.node.data:
             return
 
@@ -200,21 +209,32 @@ class HermesHelpApp(App):
             detail.update(f"Unknown key: {path}")
             return
 
-        lines = [
-            f"[bold]{param.path}[/bold]",
-            f"\nType: [italic]{param.type}[/italic]",
-            f"Default: [dim]{param.default!r}[/dim]",
-        ]
+        # Replace static detail with ParamEditor
+        editor = ParamEditor(param=param, validator=self._validator)
+        detail.remove_children()
+        detail.remove()
+        # Mount the editor where the detail was
+        main_panel = self.query_one("#main-panel")
+        main_panel.mount(editor)
 
-        if param.enum:
-            lines.append(f"Allowed: {', '.join(str(e) for e in param.enum)}")
+    def action_export(self) -> None:
+        """Open the Export screen."""
+        if self._schema is None:
+            return
+        self.push_screen(
+            ExportScreen(self._schema.params, self._schema.sections),
+            self._on_export_dismissed,
+        )
 
-        if param.min_val is not None or param.max_val is not None:
-            lo = param.min_val if param.min_val is not None else "∞"
-            hi = param.max_val if param.max_val is not None else "∞"
-            lines.append(f"Range: [{lo}, {hi}]")
+    def _on_export_dismissed(self, result: dict | None) -> None:
+        """Callback after export screen closes."""
+        if result is not None:
+            self.notify("Config exported successfully", severity="information")
 
-        detail.update("\n".join(lines))
+    def action_focus_search(self) -> None:
+        """Focus the search input."""
+        search = self.query_one("#search-input", Input)
+        search.focus()
 
 
 def main() -> None:
