@@ -1,0 +1,9 @@
+name: rapidwebs-help
+version: "0.1.0"
+description: "Auto-sync hermes-help schema and validate config on Hermes updates/config changes"
+author: "RapidWebs Enterprise (Lucien)"
+license: "MIT"
+tags: ["config", "schema", "hermes-help", "rapidwebs"]
+hooks:
+  - post_tool_call
+  - on_session_start
