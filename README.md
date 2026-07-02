@@ -1,77 +1,100 @@
 # hermes-help 🪐
 
-**Hermes Agent configuration CLI + TUI wizard.**  
-Schema-aware, always-current, always-correct configuration helper for [Hermes Agent](https://github.com/NousResearch/hermes-agent).
+**Hermes Agent configuration CLI + TUI wizard.**
+Schema-aware, always-current, always-correct — knows every config parameter.
 
-## Problem
+[![CI](https://github.com/stephanos8926-lgtm/hermes-help/actions/workflows/ci.yml/badge.svg)](https://github.com/stephanos8926-lgtm/hermes-help/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](pyproject.toml)
 
-Hermes Agent has **2000+** configuration parameters across 50+ nested YAML sections.  
-The official docs are thorough but no tool tells you:
-- *"Is my config.yaml valid?"*
-- *"What does `terminal.docker_extra_args` actually do?"*
-- *"Show me only the params I haven't set yet."*
-- *"Which config section was added in v0.17 vs v0.16?"*
+---
 
-## Solution
+## Features
 
-`hermes-help` solves this with a **dual-mode** tool:
+### CLI — `hermes-help`
 
-### CLI Mode (`hermes-help`)
-- Validate your `~/.hermes/config.yaml` against the live schema
-- Query any config key with full documentation
-- Diff your config against defaults
-- Show version history for config parameters
-- Generate minimal/complete config stubs
+| Command | Description |
+|---------|-------------|
+| `validate [PATH]` | Validate config.yaml against the full Hermes schema (464 params) |
+| `query <KEY>` | Show full docs for any config key with type, enum, range, default |
+| `diff [PATH]` | Diff user config vs schema defaults |
+| `stub [--section S]` | Generate a config.yaml stub for one or all sections |
+| `schema` | Show schema statistics (464 params, 57 top-level sections) |
 
-### TUI Wizard (`hermes-help-tui`)
-- Interactive Textual-based browser of ALL config parameters
-- Category-divided parameter tree with search/filter
-- Live validation as you type values
-- Schema-aware input: dropdowns for enums, type-checked fields
-- One-click config stub export
+### TUI — `hermes-help-tui`
 
-## Architecture
+- **Live search** — real-time filter of 464 params by path, type, enum, default
+- **ParamEditor** — type-aware inline editing (Select for enums, Input for strings, live validation)
+- **ExportScreen** — modal with section tree, live YAML preview, copy/write to file
+- **Keyboard** — `/` focus search, `E` export, `Esc` cancel
 
-```
-hermes-help/
-├── src/hermes_help/
-│   ├── cli.py           # Click CLI
-│   ├── tui/app.py       # Textual TUI app
-│   ├── schema/
-│   │   ├── static.py    # Static config schema from Hermes DEFAULT_CONFIG
-│   │   ├── dynamic.py   # Runtime config reader (yours)
-│   │   └── validator.py # Validation engine
-│   ├── providers/       # Provider/section definitions
-│   └── plugin/          # Optional Hermes plugin + hooks
-├── tests/
-├── docs/
-└── pyproject.toml
-```
+### Hermes Plugin — `rapidwebs-help`
+
+Auto-syncs `compiled_schema.json` after Hermes updates, validates config after changes. Installed at `~/.hermes/plugins/rapidwebs-help/`.
 
 ## Quick Start
 
 ```bash
 # Install
 cd ~/Workspaces/hermes-help
-uv sync --dev
+uv sync --group dev
 
-# CLI: validate your config
+# Validate your config
 hermes-help validate ~/.hermes/config.yaml
 
-# CLI: query a key
+# Query a parameter
 hermes-help query terminal.docker_image
 
-# CLI: diff against defaults
+# Diff your config against defaults  
 hermes-help diff
 
-# TUI wizard
+# Launch the TUI
 hermes-help-tui
 ```
 
-## Principles
+## Documentation
 
-1. **100% syntactically correct** — every output is valid YAML
-2. **Always up-to-date** — static schema auto-regenerated from Hermes source
-3. **Always correct** — validation engine checks type, range, enum, nesting
-4. **Full coverage** — knows ALL config parameters, not just common ones
-5. **Dual awareness** — static schema (what's possible) + dynamic values (what's set)
+| Document | Description |
+|----------|-------------|
+| [SPEC.md](docs/SPEC.md) | Technical specification |
+| [PLAN.md](docs/PLAN.md) | Implementation plan (HIGH mode) |
+| [CHANGELOG.md](CHANGELOG.md) | Release history |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Development guide |
+| [SECURITY.md](SECURITY.md) | Security policy |
+
+## Architecture
+
+```
+hermes-help/
+├── src/hermes_help/
+│   ├── cli.py              # Click CLI (validate, query, diff, stub, schema)
+│   ├── tui/app.py          # Textual TUI (search, ParamEditor, ExportScreen)
+│   ├── tui/widgets/        # ParamEditor widget
+│   ├── tui/screens/        # ExportScreen modal
+│   ├── schema/             # Static schema, config reader, validator, matcher
+│   └── plugin/             # Hermes plugin source (mirrored to ~/.hermes/plugins/)
+├── scripts/
+│   └── deploy-plugin.sh    # Plugin deploy script
+├── tests/                  # 48 tests (schema, config, validation, TUI)
+└── docs/                   # Spec, plan, phase deliverables
+```
+
+## Schema Coverage
+
+- **464** compiled parameters across **57** top-level sections
+- **110+** known enums extracted from Hermes DEFAULT_CONFIG
+- **100+** numeric range bounds (terminal.timeout: 1-600, etc.)
+- **137** total sections including nested subsections
+- Schema version **3** (auto-detects Hermes version at runtime)
+
+## Plugin Deployment
+
+```bash
+bash scripts/deploy-plugin.sh
+```
+
+Enables the `rapidwebs-help` Hermes plugin for auto schema sync + config validation.
+
+## License
+
+MIT — see [LICENSE](LICENSE)
