@@ -7,9 +7,9 @@ from typing import Any
 
 import yaml
 from textual.app import ComposeResult
-from textual.containers import Horizontal, Vertical, ScrollableContainer
+from textual.containers import Horizontal, ScrollableContainer, Vertical
 from textual.screen import ModalScreen
-from textual.widgets import Button, Header, Static, Tree, Input
+from textual.widgets import Button, Header, Input, Static, Tree
 
 
 def _validate_export_path(raw: str) -> Path | None:
@@ -254,5 +254,7 @@ class ExportScreen(ModalScreen[dict | None]):
             if data:
                 yaml_text = yaml.dump(data, default_flow_style=False, allow_unicode=True)
                 validated.write_text(yaml_text)
-                self.query_one("#preview-label", Static).update(f"Preview: (written to {validated})")
+                self.query_one("#preview-label", Static).update(
+                    f"Preview: (written to {validated})"
+                )
                 event.input.remove()

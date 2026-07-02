@@ -37,7 +37,7 @@ def _get_reader(path: str | None = None) -> ConfigReader:
     return ConfigReader(Path(path) if path else None)
 
 
-def _read_config(reader: ConfigReader) -> ConfigReader | None:
+def _read_config(reader: ConfigReader):
     """Read config, error and exit if missing."""
     config = reader.read()
     if config is None:
@@ -49,6 +49,77 @@ def _read_config(reader: ConfigReader) -> ConfigReader | None:
         )
         sys.exit(1)
     return config
+
+
+def _auto_fix_config(config, result, schema):
+    """Auto-fix trivial config issues (type mismatches, wrong enums).
+
+    Writes corrected values back to config.yaml.
+    """
+    import shutil
+
+    fixes = 0
+    raw = config.raw
+
+    for issue in result.errors:
+        path = issue.path
+        param = schema.params.get(path)
+        if param is None:
+            continue
+
+        keys = path.split(".")
+        # Navigate to the parent dict
+        d = raw
+        for k in keys[:-1]:
+            if k not in d:
+                d[k] = {}
+            d = d[k]
+
+        current = d.get(keys[-1])
+
+        # Fix type: string -> correct Python type
+        if param.type == "boolean" and isinstance(current, str):
+            d[keys[-1]] = current.lower() in ("true", "1", "yes")
+            fixes += 1
+            click.echo(f"  Fix: {path} → {d[keys[-1]]} (converted string to bool)")
+        elif param.type == "integer" and isinstance(current, str):
+            try:
+                d[keys[-1]] = int(current)
+                fixes += 1
+                click.echo(f"  Fix: {path} → {d[keys[-1]]} (converted to int)")
+            except ValueError:
+                pass
+        elif param.type == "float" and isinstance(current, str):
+            try:
+                d[keys[-1]] = float(current)
+                fixes += 1
+                click.echo(f"  Fix: {path} → {d[keys[-1]]} (converted to float)")
+            except ValueError:
+                pass
+
+        # Fix enum: pick closest match if current is close
+        if param.enum and current not in param.enum:
+            lowered = {str(e).lower(): e for e in param.enum}
+            if isinstance(current, str) and current.lower() in lowered:
+                d[keys[-1]] = lowered[current.lower()]
+                fixes += 1
+                click.echo(f"  Fix: {path} → {d[keys[-1]]} (matched enum)")
+
+    if fixes == 0:
+        click.echo("  No auto-fixable issues found.")
+        return
+
+    # Backup and write
+    config_path = Path(config.source_path)
+    backup = config_path.with_suffix(".yaml.bak")
+    shutil.copy2(config_path, backup)
+    click.echo(f"  Backup saved: {backup}")
+
+    import yaml
+
+    with open(config_path, "w") as f:
+        yaml.dump(raw, f, default_flow_style=False, allow_unicode=True)
+    click.echo(f"  {fixes} fix(es) applied to {config_path}")
 
 
 # ── Commands ──
@@ -69,7 +140,13 @@ def main():
 @click.argument("path", type=click.Path(exists=True), required=False, default=None)
 @click.option("--verbose", "-v", is_flag=True, help="Show all checks including passing")
 @click.option("--json", "as_json", is_flag=True, help="Output as JSON")
-def validate(path: str | None, verbose: bool, as_json: bool) -> None:
+@click.option(
+    "--fix", "do_fix", is_flag=True, help="Auto-fix trivial issues (type/enum mismatches)"
+)
+@click.option(
+    "--watch", "do_watch", is_flag=True, help="Watch config file for changes and re-validate"
+)
+def validate(path: str | None, verbose: bool, as_json: bool, do_fix: bool, do_watch: bool) -> None:
     """Validate a Hermes config.yaml against the schema.
 
     PATH: path to config.yaml (default: ~/.hermes/config.yaml)
@@ -97,12 +174,44 @@ def validate(path: str | None, verbose: bool, as_json: bool) -> None:
         )
         return
 
+    if do_watch:
+        import time
+        from pathlib import Path as _Path
+
+        config_path = _Path(path) if path else reader.path
+        click.echo(f"Watching {config_path} for changes... (Ctrl+C to stop)")
+        last_mtime = config_path.stat().st_mtime
+        try:
+            while True:
+                time.sleep(2)
+                current_mtime = config_path.stat().st_mtime
+                if current_mtime != last_mtime:
+                    last_mtime = current_mtime
+                    click.echo("\nFile changed — re-validating...")
+                    reader = _get_reader(str(config_path))
+                    config = reader.read()
+                    if config:
+                        new_result = validator.validate(config)
+                        if new_result.is_valid:
+                            click.echo("✔ Config is valid")
+                        else:
+                            new_result.print()
+        except KeyboardInterrupt:
+            click.echo("\nStopped.")
+
+        return
+
     if result.is_valid and not verbose:
         click.echo("✔ Config is valid")
         click.echo(f"  {len(result.warnings)} warnings, {len(result.infos)} infos")
         return
 
     result.print()
+
+    if do_fix and not result.is_valid:
+        click.echo("\nAttempting auto-fix...")
+        _auto_fix_config(config, result, schema)
+        click.echo("Done. Re-run without --fix to verify.")
 
     if not result.is_valid:
         sys.exit(1)
@@ -209,6 +318,7 @@ def completions(shell: str) -> None:
         hermes-help completions zsh > /usr/local/share/zsh/site-functions/_hermes-help
     """
     import click as _click
+
     ctx = _click.Context(main)
     if shell == "bash":
         print(_click.shell_completion.ShellCompletionForBash(main, ctx).source())
@@ -246,6 +356,7 @@ def stub(section: str | None, minimal: bool, output: str | None, clipboard: bool
 
     if clipboard:
         import subprocess as _sp
+
         try:
             _sp.run(["xclip", "-selection", "clipboard"], input=output_yaml.encode(), check=True)
             click.echo("Copied to clipboard")
@@ -300,6 +411,7 @@ def doc(key: str) -> None:
 def tui() -> None:
     """Launch the Hermes Help TUI config browser."""
     from hermes_help.tui.app import main as tui_main
+
     tui_main()
 
 

@@ -14,6 +14,7 @@ from textual.app import App, ComposeResult
 from textual.containers import Horizontal, Vertical
 from textual.widgets import Footer, Header, Input, Static, Tree
 
+from hermes_help.schema.dynamic import ConfigReader
 from hermes_help.schema.static import compile_from_hermes
 from hermes_help.schema.validator import Validator
 from hermes_help.tui.screens import ExportScreen
@@ -76,6 +77,7 @@ class HermesHelpApp(App):
         super().__init__()
         self._schema = compile_from_hermes()
         self._validator = Validator(self._schema) if self._schema else None
+        self._user_config = ConfigReader().read()
 
     def compose(self) -> ComposeResult:
         yield Header()
@@ -208,8 +210,11 @@ class HermesHelpApp(App):
             detail.update(f"Unknown key: {path}")
             return
 
-        # Replace static detail with ParamEditor
-        editor = ParamEditor(param=param, validator=self._validator)
+        # Replace static detail with ParamEditor with user value
+        user_val = None
+        if self._user_config and path in self._user_config.flat:
+            user_val = self._user_config.flat[path]
+        editor = ParamEditor(param=param, current_value=user_val, validator=self._validator)
         detail.remove_children()
         detail.remove()
         # Mount the editor where the detail was
