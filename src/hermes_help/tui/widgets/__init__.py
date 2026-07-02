@@ -1,18 +1,18 @@
 """Type-aware parameter editor widget for Hermes Help TUI."""
+
 from __future__ import annotations
 
 from typing import Any
 
-from textual.widgets import Static, Select
-from textual.widgets._input import Input
-from textual.containers import Horizontal, Vertical
-from textual.widget import Widget
 from textual.binding import Binding
+from textual.containers import Horizontal, Vertical
 from textual.reactive import reactive
+from textual.widget import Widget
+from textual.widgets import Select, Static
+from textual.widgets._input import Input
 
-from hermes_help.schema.static import ParamDef
+from hermes_help.schema.static import ParamDef, compile_from_hermes
 from hermes_help.schema.validator import Validator
-from hermes_help.schema.static import compile_from_hermes
 
 
 def _control_type_for_param(param: ParamDef) -> str:
@@ -93,18 +93,22 @@ class ParamEditor(Widget):
 
         if self._control_type == "select":
             options = []
-            for val in (self._param.enum or []):
+            for val in self._param.enum or []:
                 label = str(val)
                 options.append((label, val))
             yield Select(
                 options,
                 prompt="Choose a value...",
                 id="editor-control",
-                value=self._current_value if self._current_value is not None else self._param.default,
+                value=self._current_value
+                if self._current_value is not None
+                else self._param.default,
             )
         elif self._control_type == "checkbox":
             bool_options = [("True", True), ("False", False)]
-            current = self._current_value if self._current_value is not None else self._param.default
+            current = (
+                self._current_value if self._current_value is not None else self._param.default
+            )
             yield Select(
                 bool_options,
                 prompt="Select...",
@@ -112,7 +116,11 @@ class ParamEditor(Widget):
                 value=current,
             )
         elif self._control_type == "input":
-            value = str(self._current_value) if self._current_value is not None else str(self._param.default or "")
+            value = (
+                str(self._current_value)
+                if self._current_value is not None
+                else str(self._param.default or "")
+            )
             yield Input(
                 value=value,
                 placeholder=f"Enter {self._param.type} value...",
@@ -135,7 +143,7 @@ class ParamEditor(Widget):
         parsed = self._parse_value(value)
         issues = self._validator.validate_value(self._param.path, parsed)
         if not issues:
-            return f"\u2705 Valid"
+            return "\u2705 Valid"
         return f"\u274c {issues[0].message}"
 
     def _parse_value(self, text: str) -> Any:

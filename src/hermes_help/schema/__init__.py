@@ -1,4 +1,5 @@
 """Static schema extraction from Hermes' DEFAULT_CONFIG."""
+
 from __future__ import annotations
 
 import logging
@@ -13,6 +14,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ParamDef:
     """Definition of a single configuration parameter."""
+
     path: str
     type: str
     default: Any = None
@@ -27,6 +29,7 @@ class ParamDef:
 @dataclass
 class SectionDef:
     """Definition of a config section."""
+
     path: str
     children: list[str] = field(default_factory=list)
     description: str = ""
@@ -35,6 +38,7 @@ class SectionDef:
 @dataclass
 class CompiledSchema:
     """Complete compiled schema."""
+
     version: int
     params: dict[str, ParamDef]
     sections: dict[str, SectionDef]
@@ -70,8 +74,16 @@ KNOWN_ENUMS: dict[str, list] = {
     "browser.camofox.rewrite_loopback_urls": [True, False],
     # TTS
     "tts.provider": [
-        "edge", "elevenlabs", "openai", "xai", "minimax",
-        "mistral", "gemini", "neutts", "kittentts", "piper",
+        "edge",
+        "elevenlabs",
+        "openai",
+        "xai",
+        "minimax",
+        "mistral",
+        "gemini",
+        "neutts",
+        "kittentts",
+        "piper",
     ],
     # STT
     "stt.enabled": [True, False],
@@ -124,7 +136,15 @@ KNOWN_ENUMS: dict[str, list] = {
     "memory.memory_enabled": [True, False],
     "memory.user_profile_enabled": [True, False],
     "memory.write_approval": [True, False],
-    "memory.provider": ["", "openviking", "mem0", "hindsight", "holographic", "retaindb", "byterover"],
+    "memory.provider": [
+        "",
+        "openviking",
+        "mem0",
+        "hindsight",
+        "holographic",
+        "retaindb",
+        "byterover",
+    ],
     # Delegation
     "delegation.inherit_mcp_toolsets": [True, False],
     "delegation.orchestrator_enabled": [True, False],
@@ -192,8 +212,11 @@ KNOWN_ENUMS: dict[str, list] = {
     # TTS providers
     "tts.gemini.audio_tags": [True, False],
     "tts.edge.voice": [
-        "en-US-AriaNeural", "en-US-JennyNeural", "en-US-AndrewNeural",
-        "en-US-BrianNeural", "en-US-SoniaNeural",
+        "en-US-AriaNeural",
+        "en-US-JennyNeural",
+        "en-US-AndrewNeural",
+        "en-US-BrianNeural",
+        "en-US-SoniaNeural",
     ],
     "tts.gemini.voice": ["Kore", "Puck", "Seren", "Skye"],
     "tts.openai.voice": ["alloy", "echo", "fable", "onyx", "nova", "shimmer"],
@@ -227,7 +250,6 @@ KNOWN_ENUMS: dict[str, list] = {
     # Goals
     "goals.max_turns": list(range(1, 101)),
     # Plugin
-    "curator.prune_builtins": [True, False],
     # Tool loop guardrails
     "tool_loop_guardrails.warnings_enabled": [True, False],
     "tool_loop_guardrails.hard_stop_enabled": [True, False],

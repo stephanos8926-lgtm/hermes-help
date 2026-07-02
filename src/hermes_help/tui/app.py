@@ -4,19 +4,20 @@ Usage::
     uv run python -m hermes_help.tui.app
     uv run hermes-help-tui
 """
+
 from __future__ import annotations
 
 import logging
 
-from textual.app import App, ComposeResult
-from textual.widgets import Header, Footer, Tree, Static, Input
-from textual.containers import Horizontal, Vertical
 from textual import on
+from textual.app import App, ComposeResult
+from textual.containers import Horizontal, Vertical
+from textual.widgets import Footer, Header, Input, Static, Tree
 
 from hermes_help.schema.static import compile_from_hermes
-from hermes_help.tui.widgets.param_editor import ParamEditor, _control_type_for_param
 from hermes_help.schema.validator import Validator
 from hermes_help.tui.screens import ExportScreen
+from hermes_help.tui.widgets.param_editor import ParamEditor
 
 logger = logging.getLogger(__name__)
 
@@ -127,9 +128,7 @@ class HermesHelpApp(App):
             "Use the search bar above to filter."
         )
 
-        self.query_one("#match-count", Static).update(
-            f"Showing all {total_params} parameters"
-        )
+        self.query_one("#match-count", Static).update(f"Showing all {total_params} parameters")
 
     @on(Input.Changed, "#search-input")
     def on_search_changed(self, event: Input.Changed) -> None:
@@ -227,7 +226,7 @@ class HermesHelpApp(App):
         )
 
     def _on_export_dismissed(self, result: dict | None) -> None:
-        """Callback after export screen closes."""
+        """Handle export screen dismissal."""
         if result is not None:
             self.notify("Config exported successfully", severity="information")
 

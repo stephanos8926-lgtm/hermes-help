@@ -1,4 +1,5 @@
 """hermes-help CLI — Click-based Hermes config helper."""
+
 from __future__ import annotations
 
 import sys
@@ -8,11 +9,10 @@ import click
 import yaml
 
 from hermes_help import __version__
-from hermes_help.schema.static import compile_from_hermes
 from hermes_help.schema.dynamic import ConfigReader
-from hermes_help.schema.validator import Validator
 from hermes_help.schema.matcher import ConfigMatcher
-
+from hermes_help.schema.static import compile_from_hermes
+from hermes_help.schema.validator import Validator
 
 # ── Helpers ──
 
@@ -83,16 +83,22 @@ def validate(path: str | None, verbose: bool, as_json: bool) -> None:
 
     if as_json:
         import json
-        click.echo(json.dumps({
-            "is_valid": result.is_valid,
-            "errors": [{"path": e.path, "message": e.message} for e in result.errors],
-            "warnings": [{"path": w.path, "message": w.message} for w in result.warnings],
-            "infos": [{"path": i.path, "message": i.message} for i in result.infos],
-        }, indent=2))
+
+        click.echo(
+            json.dumps(
+                {
+                    "is_valid": result.is_valid,
+                    "errors": [{"path": e.path, "message": e.message} for e in result.errors],
+                    "warnings": [{"path": w.path, "message": w.message} for w in result.warnings],
+                    "infos": [{"path": i.path, "message": i.message} for i in result.infos],
+                },
+                indent=2,
+            )
+        )
         return
 
     if result.is_valid and not verbose:
-        click.echo(f"✔ Config is valid")
+        click.echo("✔ Config is valid")
         click.echo(f"  {len(result.warnings)} warnings, {len(result.infos)} infos")
         return
 
@@ -119,7 +125,7 @@ def query(key: str) -> None:
         similar = [p for p in schema.params if key in p]
         click.echo(f"✘ Unknown key: {key}")
         if similar:
-            click.echo(f"\n  Did you mean?")
+            click.echo("\n  Did you mean?")
             for s in similar[:5]:
                 click.echo(f"    • {s}")
         sys.exit(1)
@@ -170,14 +176,8 @@ def diff(path: str | None) -> None:
     click.echo(f"Total parameters: {len(matched.known)}")
     click.echo()
 
-    modified = [
-        p for p in matched.known.values()
-        if p.is_set and p.user_value != p.param.default
-    ]
-    same = [
-        p for p in matched.known.values()
-        if p.is_set and p.user_value == p.param.default
-    ]
+    modified = [p for p in matched.known.values() if p.is_set and p.user_value != p.param.default]
+    same = [p for p in matched.known.values() if p.is_set and p.user_value == p.param.default]
 
     if config and matched.unknown:
         click.echo(f"\033[33mUnknown keys: {len(matched.unknown)}\033[0m")
@@ -229,7 +229,7 @@ def stub(section: str | None, minimal: bool) -> None:
 def schema() -> None:
     """Show schema statistics."""
     schema = _get_schema()
-    click.echo(f"\033[1mhermes-help Schema\033[0m")
+    click.echo("\033[1mhermes-help Schema\033[0m")
     click.echo(f"  Version:   {schema.version}")
     click.echo(f"  Params:    {schema.param_count}")
     click.echo(f"  Sections:  {schema.section_count}")
@@ -243,7 +243,9 @@ def schema() -> None:
     for sec in top_sections:
         child_params = sum(1 for c in sec.children if c in schema.params)
         child_sections = sum(1 for c in sec.children if c in schema.sections)
-        click.echo(f"    \033[1m{sec.path}\033[0m — {child_params} params, {child_sections} sub-sections")
+        click.echo(
+            f"    \033[1m{sec.path}\033[0m — {child_params} params, {child_sections} sub-sections"
+        )
 
 
 @main.command()

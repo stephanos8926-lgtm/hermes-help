@@ -1,4 +1,5 @@
 """Validate user config values against the typed schema."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -11,6 +12,7 @@ from hermes_help.schema.dynamic import ConfigMap
 @dataclass
 class ValidationIssue:
     """A single validation finding."""
+
     path: str
     severity: str
     message: str
@@ -21,6 +23,7 @@ class ValidationIssue:
 @dataclass
 class ValidationResult:
     """Result of a validation pass."""
+
     errors: list[ValidationIssue] = field(default_factory=list)
     warnings: list[ValidationIssue] = field(default_factory=list)
     infos: list[ValidationIssue] = field(default_factory=list)
@@ -38,9 +41,7 @@ class ValidationResult:
             parts.append(f"\033[33m{len(self.warnings)} warnings\033[0m")
         if self.infos:
             parts.append(f"{len(self.infos)} infos")
-        return (
-            f"Validation: {', '.join(parts) if parts else '\033[32mall clear\033[0m'}"
-        )
+        return f"Validation: {', '.join(parts) if parts else '\033[32mall clear\033[0m'}"
 
     def print(self) -> None:
         """Print validation results to console."""
@@ -76,11 +77,13 @@ class Validator:
         for path, value in config.flat.items():
             param = self._schema.params.get(path)
             if param is None:
-                result.warnings.append(ValidationIssue(
-                    path=path,
-                    severity="warning",
-                    message=f"Unknown config key — not in schema",
-                ))
+                result.warnings.append(
+                    ValidationIssue(
+                        path=path,
+                        severity="warning",
+                        message="Unknown config key — not in schema",
+                    )
+                )
                 continue
             self._check_param(path, value, param, result)
 
@@ -93,11 +96,13 @@ class Validator:
         """
         param = self._schema.params.get(path)
         if param is None:
-            return [ValidationIssue(
-                path=path,
-                severity="error",
-                message=f"Unknown config key: {path}",
-            )]
+            return [
+                ValidationIssue(
+                    path=path,
+                    severity="error",
+                    message=f"Unknown config key: {path}",
+                )
+            ]
         result = ValidationResult()
         self._check_param(path, value, param, result)
         return result.errors + result.warnings
@@ -114,40 +119,48 @@ class Validator:
         expected_type = param.type
         py_type = self._TYPE_CHECK.get(expected_type)
         if py_type is not None and not isinstance(value, py_type):
-            result.errors.append(ValidationIssue(
-                path=path,
-                severity="error",
-                message=f"Expected {expected_type}, got {type(value).__name__}",
-                expected=expected_type,
-                actual=type(value).__name__,
-            ))
+            result.errors.append(
+                ValidationIssue(
+                    path=path,
+                    severity="error",
+                    message=f"Expected {expected_type}, got {type(value).__name__}",
+                    expected=expected_type,
+                    actual=type(value).__name__,
+                )
+            )
             return  # Stop: no further checks on wrong type
 
         # ── Enum check ──
         if param.enum is not None and value not in param.enum:
-            result.errors.append(ValidationIssue(
-                path=path,
-                severity="error",
-                message=f"Value must be one of: {param.enum}",
-                expected=str(param.enum),
-                actual=str(value),
-            ))
+            result.errors.append(
+                ValidationIssue(
+                    path=path,
+                    severity="error",
+                    message=f"Value must be one of: {param.enum}",
+                    expected=str(param.enum),
+                    actual=str(value),
+                )
+            )
 
         # ── Range check (numeric only) ──
         if isinstance(value, (int, float)):
             if param.min_val is not None and value < param.min_val:
-                result.errors.append(ValidationIssue(
-                    path=path,
-                    severity="error",
-                    message=f"Below minimum ({param.min_val})",
-                    expected=f">= {param.min_val}",
-                    actual=str(value),
-                ))
+                result.errors.append(
+                    ValidationIssue(
+                        path=path,
+                        severity="error",
+                        message=f"Below minimum ({param.min_val})",
+                        expected=f">= {param.min_val}",
+                        actual=str(value),
+                    )
+                )
             if param.max_val is not None and value > param.max_val:
-                result.errors.append(ValidationIssue(
-                    path=path,
-                    severity="error",
-                    message=f"Above maximum ({param.max_val})",
-                    expected=f"<= {param.max_val}",
-                    actual=str(value),
-                ))
+                result.errors.append(
+                    ValidationIssue(
+                        path=path,
+                        severity="error",
+                        message=f"Above maximum ({param.max_val})",
+                        expected=f"<= {param.max_val}",
+                        actual=str(value),
+                    )
+                )

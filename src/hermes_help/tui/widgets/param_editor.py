@@ -1,14 +1,13 @@
 """ParamEditor widget — type-aware inline editor for Hermes config params."""
+
 from __future__ import annotations
 
 from typing import Any
 
-from textual.binding import Binding
-from textual.containers import Horizontal, Vertical
-from textual.events import Key
-from textual.widgets import Input, Select, Static
-from textual.widget import Widget
 from textual import on
+from textual.binding import Binding
+from textual.widget import Widget
+from textual.widgets import Input, Select, Static
 
 from hermes_help.schema.static import ParamDef
 
@@ -88,17 +87,25 @@ class ParamEditor(Widget):
 
         if self._control_type == "select":
             options = [(str(v), v) for v in (self._param.enum or [])]
-            initial = self._current_value if self._current_value is not None else self._param.default
+            initial = (
+                self._current_value if self._current_value is not None else self._param.default
+            )
             yield Select(options, value=initial, id="editor-control")
         elif self._control_type == "checkbox":
-            initial = self._current_value if self._current_value is not None else self._param.default
+            initial = (
+                self._current_value if self._current_value is not None else self._param.default
+            )
             yield Select(
                 [("True", True), ("False", False)],
                 value=initial,
                 id="editor-control",
             )
         elif self._control_type == "input":
-            value = str(self._current_value) if self._current_value is not None else str(self._param.default or "")
+            value = (
+                str(self._current_value)
+                if self._current_value is not None
+                else str(self._param.default or "")
+            )
             yield Input(value=value, id="editor-control")
         else:
             yield Static("(not editable — null type)", id="editor-control")
@@ -126,7 +133,7 @@ class ParamEditor(Widget):
             if issues:
                 status.update(f"\u274c {issues[0].message}")
             else:
-                status.update(f"\u2705 Valid")
+                status.update("\u2705 Valid")
 
     def action_cancel(self) -> None:
         """Cancel editing — remove the editor widget."""

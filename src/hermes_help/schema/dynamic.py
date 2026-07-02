@@ -1,4 +1,5 @@
 """Read user's config.yaml, flatten to dot-path map, mask secrets."""
+
 from __future__ import annotations
 
 import logging
@@ -8,7 +9,7 @@ from typing import Any
 
 import yaml
 
-from hermes_help.config import get_config_path, SECRET_KEY_PATTERNS
+from hermes_help.config import SECRET_KEY_PATTERNS, get_config_path
 
 logger = logging.getLogger(__name__)
 
@@ -16,6 +17,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class ConfigMap:
     """User's config as a flat path→value map with metadata."""
+
     raw: dict
     flat: dict[str, Any]
     source_path: str

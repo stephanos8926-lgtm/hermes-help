@@ -1,15 +1,15 @@
 """Export screen — modal dialog for selecting sections and exporting YAML config."""
+
 from __future__ import annotations
 
 from pathlib import Path
 from typing import Any
 
 import yaml
-
 from textual.app import ComposeResult
-from textual.containers import Horizontal, Vertical, ScrollableContainer
+from textual.containers import Horizontal, ScrollableContainer, Vertical
 from textual.screen import ModalScreen
-from textual.widgets import Button, Header, Static, Tree, Input
+from textual.widgets import Button, Header, Input, Static, Tree
 
 
 class ExportScreen(ModalScreen[dict | None]):
@@ -190,6 +190,7 @@ class ExportScreen(ModalScreen[dict | None]):
             data = self._build_export_dict()
             if data:
                 import subprocess
+
                 yaml_text = yaml.dump(data, default_flow_style=False, allow_unicode=True)
                 try:
                     subprocess.run(
@@ -197,7 +198,9 @@ class ExportScreen(ModalScreen[dict | None]):
                         input=yaml_text.encode(),
                         check=True,
                     )
-                    self.query_one("#preview-label", Static).update("Preview: (copied to clipboard)")
+                    self.query_one("#preview-label", Static).update(
+                        "Preview: (copied to clipboard)"
+                    )
                 except FileNotFoundError:
                     self.query_one("#preview-label", Static).update(
                         "Preview: (xclip not found — install or use Write to File)"
@@ -231,7 +234,5 @@ class ExportScreen(ModalScreen[dict | None]):
             if data:
                 yaml_text = yaml.dump(data, default_flow_style=False, allow_unicode=True)
                 path.write_text(yaml_text)
-                self.query_one("#preview-label", Static).update(
-                    f"Preview: (written to {path})"
-                )
+                self.query_one("#preview-label", Static).update(f"Preview: (written to {path})")
                 event.input.remove()

@@ -1,4 +1,5 @@
 """Match user config values against the static schema."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -11,6 +12,7 @@ from hermes_help.schema.dynamic import ConfigMap
 @dataclass
 class MatchedParam:
     """A parameter with both schema definition and user value (if set)."""
+
     param: ParamDef
     user_value: Any = None
     is_set: bool = False
@@ -21,6 +23,7 @@ class MatchedParam:
 @dataclass
 class MatchedConfig:
     """Full matched result: schema × user config."""
+
     known: dict[str, MatchedParam]
     unknown: dict[str, Any]
     missing: dict[str, ParamDef]
@@ -30,18 +33,12 @@ class MatchedConfig:
     @property
     def modified_count(self) -> int:
         """Count of params where user value differs from default."""
-        return sum(
-            1 for p in self.known.values()
-            if p.is_set and p.user_value != p.param.default
-        )
+        return sum(1 for p in self.known.values() if p.is_set and p.user_value != p.param.default)
 
     @property
     def same_count(self) -> int:
         """Count of params set to the default value."""
-        return sum(
-            1 for p in self.known.values()
-            if p.is_set and p.user_value == p.param.default
-        )
+        return sum(1 for p in self.known.values() if p.is_set and p.user_value == p.param.default)
 
     @property
     def unset_count(self) -> int:
@@ -78,9 +75,7 @@ class ConfigMatcher:
                     unknown[path] = value
 
         missing: dict[str, ParamDef] = {
-            path: param
-            for path, param in self._schema.params.items()
-            if not known[path].is_set
+            path: param for path, param in self._schema.params.items() if not known[path].is_set
         }
 
         return MatchedConfig(
