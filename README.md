@@ -89,11 +89,19 @@ hermes-help/
 
 ## Plugin Deployment
 
+The `hermes-help` Hermes plugin auto-syncs `compiled_schema.json` after Hermes updates
+and validates config after changes.
+
 ```bash
-bash scripts/deploy-plugin.sh
+# Install from GitHub (recommended)
+hermes plugins install stephanos8926-lgtm/hermes-help
+
+# Or from local source
+git clone https://github.com/stephanos8926-lgtm/hermes-help
+cd hermes-help && bash deploy.sh
 ```
 
-Enables the `rapidwebs-help` Hermes plugin for auto schema sync + config validation.
+## CLI Reference
 
 ## License
 

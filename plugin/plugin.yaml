@@ -1,4 +1,4 @@
-name: rapidwebs-help
+name: hermes-help
 version: "0.1.0"
 description: "Auto-sync hermes-help schema and validate config on Hermes updates/config changes"
 author: "RapidWebs Enterprise (Lucien)"

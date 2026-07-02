@@ -13,7 +13,7 @@ def plugin_module():
     import importlib.util
     import sys
 
-    plugin_dir = Path.home() / ".hermes" / "plugins" / "rapidwebs-help"
+    plugin_dir = Path.home() / ".hermes" / "plugins" / "hermes-help"
     init_path = plugin_dir / "__init__.py"
 
     if not init_path.exists():

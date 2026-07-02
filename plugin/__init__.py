@@ -83,7 +83,7 @@ def _on_tool_result(tool_call, result, context):
         return {"context": "[rapidwebs-help: schema synced after update]"}
 
     # ── Trigger 2: Config file written ──
-    if "config" in tool_name.lower() or "write_file" in tool_name.lower():
+    if ("config" in tool_name.lower() or "write_file" in tool_name.lower()):
         config_path = _hermes_config_path()
         if config_path.exists() and _has_changed_recently(config_path):
             _validate_config(config_path)
@@ -100,12 +100,12 @@ def _on_session_start(context):
     """On-session-start: check schema freshness."""
     schema_path = _compiled_schema_path()
     if not schema_path.exists():
-        return {
-            "context": "[rapidwebs-help: no compiled schema — run `hermes-help schema` to generate]"
-        }
+        return {"context": "[rapidwebs-help: no compiled schema — run `hermes-help schema` to generate]"}
 
     # Check if schema is older than Hermes source
-    hermes_config_py = Path(os.path.expanduser("~/.hermes/hermes-agent/hermes_cli/config.py"))
+    hermes_config_py = Path(os.path.expanduser(
+        "~/.hermes/hermes-agent/hermes_cli/config.py"
+    ))
     if hermes_config_py.exists():
         schema_mtime = schema_path.stat().st_mtime
         hermes_mtime = hermes_config_py.stat().st_mtime
@@ -171,13 +171,11 @@ print(f'Synced: {schema.param_count} params')
     try:
         # Use python3 -c with inline code
         import shlex
-
         cmd = [
             sys.executable or "python3",
             "-c",
-            script.replace("$HOME", os.path.expanduser("~")).replace(
-                "$SCHEMA_PATH", str(schema_path)
-            ),
+            script.replace("$HOME", os.path.expanduser("~"))
+                  .replace("$SCHEMA_PATH", str(schema_path)),
         ]
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30, env=env)
         if result.returncode == 0:
@@ -198,12 +196,12 @@ def _validate_config(config_path: Path):
     try:
         result = subprocess.run(
             [hermes_help, "validate", str(config_path)],
-            capture_output=True,
-            text=True,
-            timeout=15,
+            capture_output=True, text=True, timeout=15,
         )
         if result.returncode != 0:
-            logger.warning(f"Config validation found issues:\\n{result.stdout.strip()}")
+            logger.warning(
+                f"Config validation found issues:\\n{result.stdout.strip()}"
+            )
     except Exception as exc:
         logger.warning(f"Config validation error: {exc}")
 
