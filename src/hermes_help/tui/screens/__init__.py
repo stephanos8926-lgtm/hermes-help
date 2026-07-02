@@ -7,9 +7,24 @@ from typing import Any
 
 import yaml
 from textual.app import ComposeResult
-from textual.containers import Horizontal, ScrollableContainer, Vertical
+from textual.containers import Horizontal, Vertical, ScrollableContainer
 from textual.screen import ModalScreen
-from textual.widgets import Button, Header, Input, Static, Tree
+from textual.widgets import Button, Header, Static, Tree, Input
+
+
+def _validate_export_path(raw: str) -> Path | None:
+    """Validate and resolve an export file path.
+
+    Blocks path traversal and restricts writes to home directory.
+    """
+    if ".." in raw.split("/"):
+        return None
+    path = Path(raw).expanduser().resolve()
+    try:
+        path.relative_to(Path.home().resolve())
+    except ValueError:
+        return None
+    return path
 
 
 class ExportScreen(ModalScreen[dict | None]):
@@ -229,10 +244,15 @@ class ExportScreen(ModalScreen[dict | None]):
             raw = event.value.strip()
             if not raw:
                 return
-            path = Path(raw).expanduser().resolve()
+            validated = _validate_export_path(raw)
+            if validated is None:
+                self.query_one("#preview-label", Static).update(
+                    "Preview: (path must be within home directory)"
+                )
+                return
             data = self._build_export_dict()
             if data:
                 yaml_text = yaml.dump(data, default_flow_style=False, allow_unicode=True)
-                path.write_text(yaml_text)
-                self.query_one("#preview-label", Static).update(f"Preview: (written to {path})")
+                validated.write_text(yaml_text)
+                self.query_one("#preview-label", Static).update(f"Preview: (written to {validated})")
                 event.input.remove()

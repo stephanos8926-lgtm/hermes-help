@@ -198,9 +198,30 @@ def diff(path: str | None) -> None:
 
 
 @main.command()
+@click.argument("shell", type=click.Choice(["bash", "zsh"]), default="bash")
+def completions(shell: str) -> None:
+    """Generate shell completion scripts.
+
+    SHELL: bash or zsh
+
+    Usage::
+        eval "$(hermes-help completions bash)"
+        hermes-help completions zsh > /usr/local/share/zsh/site-functions/_hermes-help
+    """
+    import click as _click
+    ctx = _click.Context(main)
+    if shell == "bash":
+        print(_click.shell_completion.ShellCompletionForBash(main, ctx).source())
+    else:
+        print(_click.shell_completion.ShellCompletionForZsh(main, ctx).source())
+
+
+@main.command()
 @click.option("--section", "-s", help="Generate stub for a specific section only")
 @click.option("--minimal", is_flag=True, help="Only required/important params")
-def stub(section: str | None, minimal: bool) -> None:
+@click.option("--output", "-o", type=click.Path(), help="Write to file instead of stdout")
+@click.option("--clipboard", is_flag=True, help="Copy to clipboard (requires xclip or pbcopy)")
+def stub(section: str | None, minimal: bool, output: str | None, clipboard: bool) -> None:
     """Generate a config.yaml stub with all (or some) parameters."""
     schema = _get_schema()
 
@@ -221,8 +242,24 @@ def stub(section: str | None, minimal: bool) -> None:
         if keys[-1] not in d:
             d[keys[-1]] = param.default
 
-    output = yaml.dump(result, default_flow_style=False, allow_unicode=True)
-    click.echo(output)
+    output_yaml = yaml.dump(result, default_flow_style=False, allow_unicode=True)
+
+    if clipboard:
+        import subprocess as _sp
+        try:
+            _sp.run(["xclip", "-selection", "clipboard"], input=output_yaml.encode(), check=True)
+            click.echo("Copied to clipboard")
+        except FileNotFoundError:
+            try:
+                _sp.run(["pbcopy"], input=output_yaml.encode(), check=True)
+                click.echo("Copied to clipboard")
+            except FileNotFoundError:
+                click.echo("Clipboard requires xclip (Linux) or pbcopy (macOS)")
+    elif output:
+        Path(output).write_text(output_yaml)
+        click.echo(f"Written to {output}")
+    else:
+        click.echo(output_yaml)
 
 
 @main.command()
@@ -257,6 +294,13 @@ def doc(key: str) -> None:
     """
     # Same as query but with more detail
     query.callback(key)
+
+
+@main.command()
+def tui() -> None:
+    """Launch the Hermes Help TUI config browser."""
+    from hermes_help.tui.app import main as tui_main
+    tui_main()
 
 
 if __name__ == "__main__":
